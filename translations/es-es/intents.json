@@ -1,0 +1,10 @@
+{
+  "disable.ggwave.intent": [
+    "(pagar|desactivar|detener|prohibir|apagar|deshabilitar) (ggwave|código de audio|códigos de audio|código QR de audio|códigos QR de audio|datos de audio)",
+    "(ggwave|código de audio|códigos de audio|código QR de audio|códigos QR de audio|datos de audio) apagado"
+  ],
+  "enable.ggwave.intent": [
+    "(encender|activar|iniciar|permitir|habilitar) (ggwave|código de audio|códigos de audio|código QR de audio|códigos QR de audio|datos de audio)",
+    "(ggwave|código de audio|códigos de audio|código QR de audio|códigos QR de audio|datos de audio) encendido"
+  ]
+}
