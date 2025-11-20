@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.5a7](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a7) (2025-11-20)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a6...0.3.5a7)
+
+**Merged pull requests:**
+
+- es-es/translate [\#30](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/30) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
+- Add pt-BR [\#29](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/29) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
+
+## [0.3.5a6](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a6) (2025-02-27)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a5...0.3.5a6)
+
 ## [0.3.5a5](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a5) (2025-01-25)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a4...0.3.5a5)
