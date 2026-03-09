@@ -5,12 +5,12 @@
   "extra_plugins": {
     "listener": ["ovos-audio-transformer-plugin-ggwave"]
   },
-  "name": "Skill GGWave",
-  "description": "Interface vocale pour le plugin ggwave.",
+  "name": "GGWave",
+  "description": "Permet d'échanger des données audio avec ggwave.",
   "examples": [
     "Démarre ggwave",
     "Autorise les données audio",
     "Désactive les codes audio"
   ],
-  "tags": ["interface vocale", "plugin audio", "ggwave"]
+  "tags": ["interface vocale", "audio", "ggwave"]
 }
