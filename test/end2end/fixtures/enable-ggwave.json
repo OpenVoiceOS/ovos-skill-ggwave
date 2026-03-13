@@ -1,0 +1,568 @@
+{
+  "skill_ids": [
+    "ovos-skill-ggwave.openvoiceos"
+  ],
+  "source_message": [
+    {
+      "type": "recognizer_loop:utterance",
+      "data": {
+        "utterances": [
+          "enable ggwave"
+        ],
+        "lang": "en-US"
+      },
+      "context": {
+        "session": {
+          "active_skills": [],
+          "utterance_states": {},
+          "session_id": "enable-ggwave",
+          "persona_id": null,
+          "lang": "en-US",
+          "context": {
+            "timeout": 120,
+            "frame_stack": []
+          },
+          "site_id": "unknown",
+          "pipeline": [
+            "ovos-padatious-pipeline-plugin-high"
+          ],
+          "location": {
+            "city": {
+              "code": "N/A",
+              "name": "N/A",
+              "state": {
+                "code": "N/A",
+                "name": "N/A",
+                "country": {
+                  "code": "N/A",
+                  "name": "N/A"
+                }
+              }
+            },
+            "coordinate": {
+              "latitude": 0,
+              "longitude": 0
+            },
+            "timezone": {
+              "code": "Europe/Lisbon",
+              "name": "Europe/Lisbon"
+            }
+          },
+          "system_unit": "metric",
+          "time_format": "half",
+          "date_format": "MDY",
+          "is_speaking": false,
+          "is_recording": false,
+          "blacklisted_skills": [],
+          "blacklisted_intents": []
+        },
+        "source": "A",
+        "destination": "B"
+      }
+    }
+  ],
+  "expected_messages": [
+    {
+      "type": "recognizer_loop:utterance",
+      "data": {
+        "utterances": [
+          "enable ggwave"
+        ],
+        "lang": "en-US"
+      },
+      "context": {
+        "session": {
+          "active_skills": [],
+          "utterance_states": {},
+          "session_id": "enable-ggwave",
+          "persona_id": null,
+          "lang": "en-US",
+          "context": {
+            "timeout": 120,
+            "frame_stack": []
+          },
+          "site_id": "unknown",
+          "pipeline": [
+            "ovos-padatious-pipeline-plugin-high"
+          ],
+          "location": {
+            "city": {
+              "code": "N/A",
+              "name": "N/A",
+              "state": {
+                "code": "N/A",
+                "name": "N/A",
+                "country": {
+                  "code": "N/A",
+                  "name": "N/A"
+                }
+              }
+            },
+            "coordinate": {
+              "latitude": 0,
+              "longitude": 0
+            },
+            "timezone": {
+              "code": "Europe/Lisbon",
+              "name": "Europe/Lisbon"
+            }
+          },
+          "system_unit": "metric",
+          "time_format": "half",
+          "date_format": "MDY",
+          "is_speaking": false,
+          "is_recording": false,
+          "blacklisted_skills": [],
+          "blacklisted_intents": []
+        },
+        "source": "A",
+        "destination": "B"
+      }
+    },
+    {
+      "type": "ovos-skill-ggwave.openvoiceos.activate",
+      "data": {},
+      "context": {
+        "session": {
+          "active_skills": [],
+          "utterance_states": {},
+          "session_id": "enable-ggwave",
+          "persona_id": null,
+          "lang": "en-US",
+          "context": {
+            "timeout": 120,
+            "frame_stack": []
+          },
+          "site_id": "unknown",
+          "pipeline": [
+            "ovos-padatious-pipeline-plugin-high"
+          ],
+          "location": {
+            "city": {
+              "code": "N/A",
+              "name": "N/A",
+              "state": {
+                "code": "N/A",
+                "name": "N/A",
+                "country": {
+                  "code": "N/A",
+                  "name": "N/A"
+                }
+              }
+            },
+            "coordinate": {
+              "latitude": 0,
+              "longitude": 0
+            },
+            "timezone": {
+              "code": "Europe/Lisbon",
+              "name": "Europe/Lisbon"
+            }
+          },
+          "system_unit": "metric",
+          "time_format": "half",
+          "date_format": "MDY",
+          "is_speaking": false,
+          "is_recording": false,
+          "blacklisted_skills": [],
+          "blacklisted_intents": []
+        },
+        "source": "B",
+        "destination": "A",
+        "lang": "en-US",
+        "skill_id": "ovos-skill-ggwave.openvoiceos"
+      }
+    },
+    {
+      "type": "ovos-skill-ggwave.openvoiceos:enable.ggwave.intent",
+      "data": {
+        "utterances": [
+          "enable ggwave"
+        ],
+        "lang": "en-US",
+        "utterance": "enable ggwave"
+      },
+      "context": {
+        "session": {
+          "active_skills": [
+            [
+              "ovos-skill-ggwave.openvoiceos",
+              1773431395.9536417
+            ]
+          ],
+          "utterance_states": {},
+          "session_id": "enable-ggwave",
+          "persona_id": null,
+          "lang": "en-US",
+          "context": {
+            "timeout": 120,
+            "frame_stack": []
+          },
+          "site_id": "unknown",
+          "pipeline": [
+            "ovos-padatious-pipeline-plugin-high"
+          ],
+          "location": {
+            "city": {
+              "code": "N/A",
+              "name": "N/A",
+              "state": {
+                "code": "N/A",
+                "name": "N/A",
+                "country": {
+                  "code": "N/A",
+                  "name": "N/A"
+                }
+              }
+            },
+            "coordinate": {
+              "latitude": 0,
+              "longitude": 0
+            },
+            "timezone": {
+              "code": "Europe/Lisbon",
+              "name": "Europe/Lisbon"
+            }
+          },
+          "system_unit": "metric",
+          "time_format": "half",
+          "date_format": "MDY",
+          "is_speaking": false,
+          "is_recording": false,
+          "blacklisted_skills": [],
+          "blacklisted_intents": []
+        },
+        "source": "B",
+        "destination": "A",
+        "lang": "en-US",
+        "skill_id": "ovos-skill-ggwave.openvoiceos"
+      }
+    },
+    {
+      "type": "mycroft.skill.handler.start",
+      "data": {
+        "name": "GGWaveSkill.handle_enable_ggwave"
+      },
+      "context": {
+        "session": {
+          "active_skills": [
+            [
+              "ovos-skill-ggwave.openvoiceos",
+              1773431395.9536417
+            ]
+          ],
+          "utterance_states": {},
+          "session_id": "enable-ggwave",
+          "persona_id": null,
+          "lang": "en-US",
+          "context": {
+            "timeout": 120,
+            "frame_stack": []
+          },
+          "site_id": "unknown",
+          "pipeline": [
+            "ovos-padatious-pipeline-plugin-high"
+          ],
+          "location": {
+            "city": {
+              "code": "N/A",
+              "name": "N/A",
+              "state": {
+                "code": "N/A",
+                "name": "N/A",
+                "country": {
+                  "code": "N/A",
+                  "name": "N/A"
+                }
+              }
+            },
+            "coordinate": {
+              "latitude": 0,
+              "longitude": 0
+            },
+            "timezone": {
+              "code": "Europe/Lisbon",
+              "name": "Europe/Lisbon"
+            }
+          },
+          "system_unit": "metric",
+          "time_format": "half",
+          "date_format": "MDY",
+          "is_speaking": false,
+          "is_recording": false,
+          "blacklisted_skills": [],
+          "blacklisted_intents": []
+        },
+        "source": "B",
+        "destination": "A",
+        "lang": "en-US",
+        "skill_id": "ovos-skill-ggwave.openvoiceos"
+      }
+    },
+    {
+      "type": "ovos.ggwave.enable",
+      "data": {},
+      "context": {
+        "session": {
+          "active_skills": [
+            [
+              "ovos-skill-ggwave.openvoiceos",
+              1773431395.9536417
+            ]
+          ],
+          "utterance_states": {},
+          "session_id": "enable-ggwave",
+          "persona_id": null,
+          "lang": "en-US",
+          "context": {
+            "timeout": 120,
+            "frame_stack": []
+          },
+          "site_id": "unknown",
+          "pipeline": [
+            "ovos-padatious-pipeline-plugin-high"
+          ],
+          "location": {
+            "city": {
+              "code": "N/A",
+              "name": "N/A",
+              "state": {
+                "code": "N/A",
+                "name": "N/A",
+                "country": {
+                  "code": "N/A",
+                  "name": "N/A"
+                }
+              }
+            },
+            "coordinate": {
+              "latitude": 0,
+              "longitude": 0
+            },
+            "timezone": {
+              "code": "Europe/Lisbon",
+              "name": "Europe/Lisbon"
+            }
+          },
+          "system_unit": "metric",
+          "time_format": "half",
+          "date_format": "MDY",
+          "is_speaking": false,
+          "is_recording": false,
+          "blacklisted_skills": [],
+          "blacklisted_intents": []
+        },
+        "source": "B",
+        "destination": "A",
+        "lang": "en-US",
+        "skill_id": "ovos-skill-ggwave.openvoiceos"
+      }
+    },
+    {
+      "type": "speak",
+      "data": {
+        "utterance": "enabling audio QR codes for 15 minutes",
+        "expect_response": false,
+        "meta": {
+          "dialog": "ggwave.enabled",
+          "data": {},
+          "skill": "ovos-skill-ggwave.openvoiceos"
+        },
+        "lang": "en-US"
+      },
+      "context": {
+        "session": {
+          "active_skills": [
+            [
+              "ovos-skill-ggwave.openvoiceos",
+              1773431395.9536417
+            ]
+          ],
+          "utterance_states": {},
+          "session_id": "enable-ggwave",
+          "persona_id": null,
+          "lang": "en-US",
+          "context": {
+            "timeout": 120,
+            "frame_stack": []
+          },
+          "site_id": "unknown",
+          "pipeline": [
+            "ovos-padatious-pipeline-plugin-high"
+          ],
+          "location": {
+            "city": {
+              "code": "N/A",
+              "name": "N/A",
+              "state": {
+                "code": "N/A",
+                "name": "N/A",
+                "country": {
+                  "code": "N/A",
+                  "name": "N/A"
+                }
+              }
+            },
+            "coordinate": {
+              "latitude": 0,
+              "longitude": 0
+            },
+            "timezone": {
+              "code": "Europe/Lisbon",
+              "name": "Europe/Lisbon"
+            }
+          },
+          "system_unit": "metric",
+          "time_format": "half",
+          "date_format": "MDY",
+          "is_speaking": false,
+          "is_recording": false,
+          "blacklisted_skills": [],
+          "blacklisted_intents": []
+        },
+        "source": "B",
+        "destination": "A",
+        "lang": "en-US",
+        "skill_id": "ovos-skill-ggwave.openvoiceos"
+      }
+    },
+    {
+      "type": "mycroft.skill.handler.complete",
+      "data": {
+        "name": "GGWaveSkill.handle_enable_ggwave"
+      },
+      "context": {
+        "session": {
+          "active_skills": [
+            [
+              "ovos-skill-ggwave.openvoiceos",
+              1773431395.9536417
+            ]
+          ],
+          "utterance_states": {},
+          "session_id": "enable-ggwave",
+          "persona_id": null,
+          "lang": "en-US",
+          "context": {
+            "timeout": 120,
+            "frame_stack": []
+          },
+          "site_id": "unknown",
+          "pipeline": [
+            "ovos-padatious-pipeline-plugin-high"
+          ],
+          "location": {
+            "city": {
+              "code": "N/A",
+              "name": "N/A",
+              "state": {
+                "code": "N/A",
+                "name": "N/A",
+                "country": {
+                  "code": "N/A",
+                  "name": "N/A"
+                }
+              }
+            },
+            "coordinate": {
+              "latitude": 0,
+              "longitude": 0
+            },
+            "timezone": {
+              "code": "Europe/Lisbon",
+              "name": "Europe/Lisbon"
+            }
+          },
+          "system_unit": "metric",
+          "time_format": "half",
+          "date_format": "MDY",
+          "is_speaking": false,
+          "is_recording": false,
+          "blacklisted_skills": [],
+          "blacklisted_intents": []
+        },
+        "source": "B",
+        "destination": "A",
+        "lang": "en-US",
+        "skill_id": "ovos-skill-ggwave.openvoiceos"
+      }
+    },
+    {
+      "type": "ovos.utterance.handled",
+      "data": {
+        "name": "GGWaveSkill.handle_enable_ggwave"
+      },
+      "context": {
+        "session": {
+          "active_skills": [
+            [
+              "ovos-skill-ggwave.openvoiceos",
+              1773431395.9536417
+            ]
+          ],
+          "utterance_states": {},
+          "session_id": "enable-ggwave",
+          "persona_id": null,
+          "lang": "en-US",
+          "context": {
+            "timeout": 120,
+            "frame_stack": []
+          },
+          "site_id": "unknown",
+          "pipeline": [
+            "ovos-padatious-pipeline-plugin-high"
+          ],
+          "location": {
+            "city": {
+              "code": "N/A",
+              "name": "N/A",
+              "state": {
+                "code": "N/A",
+                "name": "N/A",
+                "country": {
+                  "code": "N/A",
+                  "name": "N/A"
+                }
+              }
+            },
+            "coordinate": {
+              "latitude": 0,
+              "longitude": 0
+            },
+            "timezone": {
+              "code": "Europe/Lisbon",
+              "name": "Europe/Lisbon"
+            }
+          },
+          "system_unit": "metric",
+          "time_format": "half",
+          "date_format": "MDY",
+          "is_speaking": false,
+          "is_recording": false,
+          "blacklisted_skills": [],
+          "blacklisted_intents": []
+        },
+        "source": "B",
+        "destination": "A",
+        "lang": "en-US",
+        "skill_id": "ovos-skill-ggwave.openvoiceos"
+      }
+    }
+  ],
+  "eof_msgs": [
+    "ovos.utterance.handled"
+  ],
+  "ignore_messages": [
+    "ovos.skills.settings_changed",
+    "gui.clear.namespace",
+    "gui.value.set",
+    "mycroft.gui.screen.close",
+    "gui.page.show"
+  ],
+  "ignore_gui": true,
+  "flip_points": [],
+  "test_msg_type": true,
+  "test_msg_data": true,
+  "test_msg_context": true,
+  "test_routing": true
+}

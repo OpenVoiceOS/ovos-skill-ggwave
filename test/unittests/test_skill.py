@@ -5,9 +5,9 @@
 Tests cover handler logic in isolation using FakeBus.
 For full intent-matching and message-sequence tests, see test/end2end/.
 """
+
 import unittest
-from unittest.mock import MagicMock, patch
-import datetime
+from unittest.mock import MagicMock
 
 from ovos_utils.fakebus import FakeBus
 from ovos_bus_client.message import Message
@@ -103,7 +103,9 @@ class TestGGWaveSkillHandlers(unittest.TestCase):
         self.assertEqual(len(emitted), 1)
         self.skill.speak_dialog.assert_called_once_with("ggwave.enabled")
 
-    def test_handle_enable_ggwave_when_already_enabled_speaks_already_enabled(self) -> None:
+    def test_handle_enable_ggwave_when_already_enabled_speaks_already_enabled(
+        self,
+    ) -> None:
         """handle_enable_ggwave speaks 'ggwave.already.enabled' when already active."""
         self.skill.enabled = True
         self.skill.speak_dialog = MagicMock()
@@ -147,7 +149,9 @@ class TestGGWaveSkillHandlers(unittest.TestCase):
 
         self.skill.cancel_scheduled_event.assert_called_once_with("ggwave.timeout")
 
-    def test_handle_disable_ggwave_when_already_disabled_speaks_already_disabled(self) -> None:
+    def test_handle_disable_ggwave_when_already_disabled_speaks_already_disabled(
+        self,
+    ) -> None:
         """handle_disable_ggwave speaks 'ggwave.already.disabled' when not active."""
         self.skill.enabled = False
         self.skill.speak_dialog = MagicMock()
