@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.5a8](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a8) (2026-03-13)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a7...0.3.5a8)
+
+**Merged pull requests:**
+
+- Add French GGWave locale [\#34](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/34) ([goldyfruit](https://github.com/goldyfruit))
+- gl-es/translate [\#33](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/33) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
+- es-es/translate [\#32](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/32) ([gitlocalize-app[bot]](https://github.com/apps/gitlocalize-app))
+
 ## [0.3.5a7](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a7) (2025-11-20)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a6...0.3.5a7)
