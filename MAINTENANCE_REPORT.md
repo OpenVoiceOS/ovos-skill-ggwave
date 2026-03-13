@@ -4,9 +4,10 @@
 
 - **AI Model**: qwen3.5-2501
 - **Actions Taken**:
-  - Fixed CI failure in ovoscope workflow — added `ovos-padatious-pipeline-plugin` to `[project.optional-dependencies].test` in `pyproject.toml`
+  - Fixed CI failure in ovoscope workflow — added `ovos-padatious` to `[project.optional-dependencies].test` in `pyproject.toml`
   - Updated `QUICK_FACTS.md` — added test dependencies row
   - CI was failing because `require_padatious: true` was set in `.github/workflows/ovoscope.yml` but the dependency was not installed
+  - Note: PyPI package name is `ovos-padatious` (not `ovos-padatious-pipeline-plugin` which is the entry point name)
 - **Oversight**: Human review required before merging.
 
 ## 2026-03-10
