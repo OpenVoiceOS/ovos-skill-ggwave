@@ -6,8 +6,9 @@ Tests cover handler logic in isolation using FakeBus.
 For full intent-matching and message-sequence tests, see test/end2end/.
 """
 
+import json
 import unittest
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, mock_open, patch
 
 from ovos_utils.fakebus import FakeBus
 from ovos_bus_client.message import Message
@@ -180,6 +181,160 @@ class TestGGWaveSkillHandlers(unittest.TestCase):
         self.skill.enabled = True
         self.bus.emit(Message("ggwave.disabled"))
         self.assertFalse(self.skill.enabled)
+
+    # ------------------------------------------------------------------ #
+    # persona install                                                      #
+    # ------------------------------------------------------------------ #
+
+    def test_initialize_registers_persona_install_event(self) -> None:
+        """GGWaveSkill.initialize registers 'ovos.persona.install.index' bus event."""
+        listeners = self.bus.ee.listeners("ovos.persona.install.index")
+        self.assertTrue(len(listeners) > 0)
+
+    def test_handle_install_index_fetches_persona_and_installs(self) -> None:
+        """handle_install_index fetches persona data and installs it."""
+        persona_json = json.dumps(
+            {
+                "name": "TestPersona",
+                "description": "A test persona",
+                "catch_phrase": "Hello from test!",
+                "solvers": ["ovos-solver-hello-plugin"],
+            }
+        )
+        mock_response = MagicMock()
+        mock_response.text = persona_json
+        mock_response.raise_for_status = MagicMock()
+
+        with patch("requests.get", return_value=mock_response):
+            with patch("builtins.open", mock_open()):
+                with patch("os.makedirs", return_value=None):
+                    msg = Message("ovos.persona.install.index", data={"index": 0})
+                    self.skill.speak = MagicMock()
+                    self.skill.bus.emit = MagicMock()
+                    self.skill.handle_install_index(msg)
+
+                    # Should emit pip install message for the solver
+                    emit_calls = self.bus.emit.call_args_list
+                    pip_install_calls = [
+                        c for c in emit_calls if c[0][0].msg_type == "ovos.pip.install"
+                    ]
+                    self.assertEqual(len(pip_install_calls), 1)
+                    self.assertIn(
+                        "ovos-solver-hello-plugin",
+                        pip_install_calls[0][0][0].data["packages"],
+                    )
+
+                    # Should speak the catch_phrase
+                    self.skill.speak.assert_called_once_with("Hello from test!")
+
+    def test_handle_install_index_with_invalid_index_logs_error(self) -> None:
+        """handle_install_index with out-of-range index logs error and does nothing."""
+        mock_response = MagicMock()
+        mock_response.text = '{"name": "Test"}'
+        mock_response.raise_for_status = MagicMock()
+
+        with patch("requests.get", return_value=mock_response):
+            msg = Message("ovos.persona.install.index", data={"index": 999})
+            self.skill.log.error = MagicMock()
+            self.skill.handle_install_index(msg)
+            self.skill.log.error.assert_called_with("Invalid persona index: 999")
+
+    def test_handle_install_index_with_negative_index_logs_error(self) -> None:
+        """handle_install_index with negative index logs error and does nothing."""
+        mock_response = MagicMock()
+        mock_response.text = '{"name": "Test"}'
+        mock_response.raise_for_status = MagicMock()
+
+        with patch("requests.get", return_value=mock_response):
+            msg = Message("ovos.persona.install.index", data={"index": -1})
+            self.skill.log.error = MagicMock()
+            self.skill.handle_install_index(msg)
+            self.skill.log.error.assert_called_with("Invalid persona index: -1")
+
+    def test_handle_install_index_skips_failure_solver(self) -> None:
+        """handle_install_index skips installation of failure solver plugin."""
+        persona_json = json.dumps(
+            {
+                "name": "TestPersona",
+                "description": "A test persona",
+                "catch_phrase": "Hello!",
+                "solvers": ["ovos-solver-failure-plugin", "ovos-solver-real-plugin"],
+            }
+        )
+        mock_response = MagicMock()
+        mock_response.text = persona_json
+        mock_response.raise_for_status = MagicMock()
+
+        with patch("requests.get", return_value=mock_response):
+            with patch("builtins.open", unittest.mock.mock_open()):
+                with patch("os.makedirs", return_value=None):
+                    msg = Message("ovos.persona.install.index", data={"index": 0})
+                    self.skill.bus.emit = MagicMock()
+                    self.skill.handle_install_index(msg)
+
+                    # Should only emit pip install for the real solver
+                    emit_calls = self.bus.emit.call_args_list
+                    pip_calls = [
+                        c for c in emit_calls if c[0][0].msg_type == "ovos.pip.install"
+                    ]
+                    self.assertEqual(len(pip_calls), 1)
+                    self.assertIn(
+                        "ovos-solver-real-plugin", pip_calls[0][0][0].data["packages"]
+                    )
+                    self.assertNotIn("failure", pip_calls[0][0][0].data["packages"][0])
+
+    def test_install_persona_without_name_logs_error(self) -> None:
+        """_install_persona with missing name logs error and returns early."""
+        self.skill.log.error = MagicMock()
+        self.skill._install_persona({})
+        self.skill.log.error.assert_called_with("Persona data missing 'name'")
+
+    def test_install_persona_speaks_default_when_no_catch_phrase(self) -> None:
+        """_install_persona speaks default message when catch_phrase is not provided."""
+        persona_data = {"name": "TestPersona", "solvers": []}
+        self.skill.speak = MagicMock()
+        self.skill.bus.emit = MagicMock()
+
+        with patch("os.makedirs", return_value=None):
+            with patch("builtins.open", unittest.mock.mock_open()):
+                self.skill._install_persona(persona_data)
+
+        self.skill.speak.assert_called_with(
+            "Persona TestPersona has been installed and is ready for use."
+        )
+
+    def test_install_persona_saves_json_file(self) -> None:
+        """_install_persona saves persona data as JSON file (without description)."""
+        persona_data = {
+            "name": "TestPersona",
+            "description": "Should be removed",
+            "catch_phrase": "Hi!",
+            "solvers": [],
+        }
+        self.skill.bus.emit = MagicMock()
+
+        with patch("os.makedirs", return_value=None):
+            with patch("builtins.open", mock_open()):
+                with patch("json.dump") as mock_json_dump:
+                    self.skill._install_persona(persona_data)
+                    mock_json_dump.assert_called_once()
+                    # Verify description is not in saved data
+                    saved_data = mock_json_dump.call_args[0][0]
+                    self.assertNotIn("description", saved_data)
+
+    def test_install_persona_emits_audio_play_sound(self) -> None:
+        """_install_persona emits mycroft.audio.play_sound after installation."""
+        persona_data = {"name": "TestPersona", "solvers": []}
+        self.skill.speak = MagicMock()
+        emitted: list[Message] = []
+        self.bus.on("mycroft.audio.play_sound", lambda m: emitted.append(m))
+
+        with patch("os.makedirs", return_value=None):
+            with patch("builtins.open", unittest.mock.mock_open()):
+                self.skill._install_persona(persona_data)
+
+        self.assertEqual(len(emitted), 1)
+        self.assertEqual(emitted[0].data["uri"], "snd/acknowledge.mp3")
 
 
 if __name__ == "__main__":
