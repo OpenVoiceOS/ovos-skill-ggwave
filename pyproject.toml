@@ -19,6 +19,7 @@ dynamic = ["version"]
 [project.optional-dependencies]
 test = [
     "ovoscope>=0.12.0a1",
+    "ovos-padatious-pipeline-plugin",
 ]
 
 [project.urls]

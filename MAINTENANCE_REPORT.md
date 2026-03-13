@@ -1,5 +1,14 @@
 # MAINTENANCE_REPORT — ovos-skill-ggwave
 
+## 2026-03-13
+
+- **AI Model**: qwen3.5-2501
+- **Actions Taken**:
+  - Fixed CI failure in ovoscope workflow — added `ovos-padatious-pipeline-plugin` to `[project.optional-dependencies].test` in `pyproject.toml`
+  - Updated `QUICK_FACTS.md` — added test dependencies row
+  - CI was failing because `require_padatious: true` was set in `.github/workflows/ovoscope.yml` but the dependency was not installed
+- **Oversight**: Human review required before merging.
+
 ## 2026-03-10
 
 - **AI Model**: claude-sonnet-4-6

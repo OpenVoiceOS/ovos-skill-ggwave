@@ -14,5 +14,6 @@
 | **Locales** | ca-es, da-dk, de-de, es-es, eu, gl-es, it-it, pt-br, en-us |
 | **License** | Apache 2.0 |
 | **Tests (unit)** | `test/unittests/test_skill.py` |
-| **Tests (E2E)** | `test/end2end/test_ggwave.py` |
+| **Tests (E2E)** | `test/end2end/test_ggwave.py` (requires `ovos-padatious-pipeline-plugin`) |
 | **Docs** | `docs/index.md` |
+| **Test dependencies** | `ovoscope`, `ovos-padatious-pipeline-plugin` |
