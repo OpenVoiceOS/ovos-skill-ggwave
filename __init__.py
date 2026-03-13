@@ -1,8 +1,13 @@
 import datetime
-
+import json
+import os
+import requests
+import gzip
+import base64
 from ovos_workshop.skills.ovos import OVOSSkill
 from ovos_workshop.decorators import intent_handler
-
+from ovos_config.locations import get_xdg_config_save_path
+from ovos_bus_client.message import Message
 
 
 class GGWaveSkill(OVOSSkill):
@@ -10,7 +15,17 @@ class GGWaveSkill(OVOSSkill):
     def initialize(self):
         self.add_event("ggwave.enabled", self.handle_ggwave_on)
         self.add_event("ggwave.disabled", self.handle_ggwave_off)
+        
+        # Persona Installation Events
+        self.add_event("ovos.persona.install.index", self.handle_install_index)
+        self.add_event("ovos.persona.install", self.handle_install_raw)
+        
         self.enabled = False
+
+    @property
+    def persona_store_url(self):
+        return self.settings.get("persona_store_url") or \
+            "https://raw.githubusercontent.com/TigreGotico/ovos-persona-marketplace/master/personas.jsonl"
 
     def handle_ggwave_on(self, message):
         self.enabled = True
@@ -40,3 +55,69 @@ class GGWaveSkill(OVOSSkill):
         else:
             self.speak_dialog("ggwave.already.disabled")
 
+    def handle_install_index(self, message):
+        index = int(message.data.get("index", -1))
+        self.log.info(f"Installing persona at index: {index}")
+        
+        try:
+            response = requests.get(self.persona_store_url)
+            response.raise_for_status()
+            lines = response.text.strip().split('\n')
+            if 0 <= index < len(lines):
+                persona_data = json.loads(lines[index])
+                self._install_persona(persona_data)
+            else:
+                self.log.error(f"Invalid persona index: {index}")
+        except Exception as e:
+            self.log.exception(f"Failed to fetch persona from store: {e}")
+
+    def handle_install_raw(self, message):
+        data = message.data.get("data", "")
+        self.log.info("Installing persona from raw data")
+        
+        try:
+            if data.startswith("Z"):
+                # Handle Gzipped data
+                compressed = base64.b64decode(data[1:])
+                json_str = gzip.decompress(compressed).decode("utf-8")
+                persona_data = json.loads(json_str)
+            else:
+                persona_data = json.loads(data)
+            
+            self._install_persona(persona_data)
+        except Exception as e:
+            self.log.exception(f"Failed to parse persona data: {e}")
+
+    def _install_persona(self, persona_data):
+        name = persona_data.get("name")
+        if not name:
+            self.log.error("Persona data missing 'name'")
+            return
+
+        # 1. Save persona.json
+        config_path = get_xdg_config_save_path("ovos_persona")
+        os.makedirs(config_path, exist_ok=True)
+        
+        # Clean description for the file
+        clean_data = {k: v for k, v in persona_data.items() if k != "description"}
+        
+        file_path = os.path.join(config_path, f"{name}.json")
+        with open(file_path, "w") as f:
+            json.dump(clean_data, f, indent=2)
+        
+        self.log.info(f"Persona saved to: {file_path}")
+
+        # 2. Install solver dependencies
+        solvers = persona_data.get("solvers", [])
+        for solver in solvers:
+            if solver == "ovos-solver-failure-plugin":
+                continue
+            
+            # Assume the plugin name is the pip package name
+            # This is standard for most OVOS plugins
+            self.log.info(f"Requesting installation of solver: {solver}")
+            self.bus.emit(Message("ovos.pip.install", {"packages": [solver]}))
+
+        # 3. Confirmation
+        self.speak(f"Persona {name} has been installed and is ready for use.")
+        self.bus.emit(Message("mycroft.audio.play_sound", {"uri": "snd/acknowledge.mp3"}))
