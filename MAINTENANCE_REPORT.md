@@ -6,8 +6,10 @@
 - **Actions Taken**:
   - Fixed CI failure in ovoscope workflow — added `ovos-padatious` to `[project.optional-dependencies].test` in `pyproject.toml`
   - Updated `QUICK_FACTS.md` — added test dependencies row
-  - CI was failing because `require_padatious: true` was set in `.github/workflows/ovoscope.yml` but the dependency was not installed
-  - Note: PyPI package name is `ovos-padatious` (not `ovos-padatious-pipeline-plugin` which is the entry point name)
+  - Updated `gh-automations/.github/workflows/ovoscope.yml` to auto-install pipelines as **CI fallback** (not replacement)
+  - CI was failing because `require_padatious: true` was set but dependency was missing from `pyproject.toml`
+  - Resolution: Skills MUST declare pipeline dependencies in `pyproject.toml` for local/distro testing; CI auto-install is safety net only
+  - Note: PyPI package name is `ovos-padatious` (entry point: `ovos-padatious-pipeline-plugin`)
 - **Oversight**: Human review required before merging.
 
 ## 2026-03-10
