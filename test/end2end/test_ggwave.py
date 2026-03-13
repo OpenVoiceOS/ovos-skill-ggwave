@@ -3,7 +3,7 @@
 """End-to-end tests for ovos-skill-ggwave using ovoscope.
 
 These tests verify the full intent-matching and message-sequence behaviour:
-  - utterances are matched by the Padacioso pipeline
+  - utterances are matched by the Padatious pipeline
   - correct bus messages are emitted in the right order
   - dialog responses match expected strings
 
@@ -15,18 +15,17 @@ import unittest
 
 from ovos_bus_client.message import Message
 from ovos_bus_client.session import Session
-from ovoscope import End2EndTest, PADACIOSO_PIPELINE
+from ovoscope import End2EndTest, PADATIOUS_PIPELINE
 
 SKILL_ID = "ovos-skill-ggwave.openvoiceos"
 
-# Padacioso pipeline — pure Python implementation, always available via ovos-workshop
-# The intent files use (..|..) syntax which Padacioso supports
+# Padatious pipeline — C extension, requires swig
 
 
-def _padacioso_session(session_id: str) -> Session:
-    """Return a Session restricted to Padacioso to avoid Adapt shadowing."""
+def _padatious_session(session_id: str) -> Session:
+    """Return a Session restricted to Padatious."""
     session = Session(session_id)
-    session.pipeline = PADACIOSO_PIPELINE
+    session.pipeline = PADATIOUS_PIPELINE
     return session
 
 
@@ -44,7 +43,7 @@ class TestEnableGGWave(unittest.TestCase):
 
     def test_enable_ggwave_utterance_matched_and_emits_enable(self) -> None:
         """'enable ggwave' matches enable.ggwave.intent, emits ovos.ggwave.enable and speaks."""
-        session = _padacioso_session("e2e-enable-1")
+        session = _padatious_session("e2e-enable-1")
         utterance = _utterance_message("enable ggwave", session)
 
         test = End2EndTest(
@@ -93,7 +92,7 @@ class TestEnableGGWave(unittest.TestCase):
 
     def test_start_audio_codes_utterance_matches_enable_intent(self) -> None:
         """'start audio codes' also matches enable.ggwave.intent."""
-        session = _padacioso_session("e2e-enable-2")
+        session = _padatious_session("e2e-enable-2")
         utterance = _utterance_message("start audio codes", session)
 
         test = End2EndTest(
@@ -122,7 +121,7 @@ class TestEnableGGWave(unittest.TestCase):
 
     def test_ggwave_on_utterance_matches_enable_intent(self) -> None:
         """'ggwave on' matches enable.ggwave.intent."""
-        session = _padacioso_session("e2e-enable-3")
+        session = _padatious_session("e2e-enable-3")
         utterance = _utterance_message("ggwave on", session)
 
         test = End2EndTest(
@@ -150,7 +149,7 @@ class TestDisableGGWave(unittest.TestCase):
 
     def test_disable_ggwave_utterance_matched_and_emits_disable(self) -> None:
         """'disable ggwave' matches disable.ggwave.intent, emits ovos.ggwave.disable and speaks."""
-        session = _padacioso_session("e2e-disable-1")
+        session = _padatious_session("e2e-disable-1")
         # Pre-enable so the handler emits the right branch
         session.active_skills = [(SKILL_ID, 0.0)]
         utterance = _utterance_message("disable ggwave", session)
@@ -182,7 +181,7 @@ class TestDisableGGWave(unittest.TestCase):
 
     def test_stop_audio_codes_utterance_matches_disable_intent(self) -> None:
         """'stop audio codes' matches disable.ggwave.intent."""
-        session = _padacioso_session("e2e-disable-2")
+        session = _padatious_session("e2e-disable-2")
         utterance = _utterance_message("stop audio codes", session)
 
         test = End2EndTest(
@@ -206,7 +205,7 @@ class TestDisableGGWave(unittest.TestCase):
 
     def test_ggwave_off_utterance_matches_disable_intent(self) -> None:
         """'ggwave off' matches disable.ggwave.intent."""
-        session = _padacioso_session("e2e-disable-3")
+        session = _padatious_session("e2e-disable-3")
         utterance = _utterance_message("ggwave off", session)
 
         test = End2EndTest(
