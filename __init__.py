@@ -2,8 +2,6 @@ import datetime
 import json
 import os
 import requests
-import gzip
-import base64
 from ovos_workshop.skills.ovos import OVOSSkill
 from ovos_workshop.decorators import intent_handler
 from ovos_config.locations import get_xdg_config_save_path
@@ -18,7 +16,6 @@ class GGWaveSkill(OVOSSkill):
         
         # Persona Installation Events
         self.add_event("ovos.persona.install.index", self.handle_install_index)
-        self.add_event("ovos.persona.install", self.handle_install_raw)
         
         self.enabled = False
 
@@ -71,23 +68,6 @@ class GGWaveSkill(OVOSSkill):
         except Exception as e:
             self.log.exception(f"Failed to fetch persona from store: {e}")
 
-    def handle_install_raw(self, message):
-        data = message.data.get("data", "")
-        self.log.info("Installing persona from raw data")
-        
-        try:
-            if data.startswith("Z"):
-                # Handle Gzipped data
-                compressed = base64.b64decode(data[1:])
-                json_str = gzip.decompress(compressed).decode("utf-8")
-                persona_data = json.loads(json_str)
-            else:
-                persona_data = json.loads(data)
-            
-            self._install_persona(persona_data)
-        except Exception as e:
-            self.log.exception(f"Failed to parse persona data: {e}")
-
     def _install_persona(self, persona_data):
         name = persona_data.get("name")
         if not name:
@@ -98,7 +78,7 @@ class GGWaveSkill(OVOSSkill):
         config_path = get_xdg_config_save_path("ovos_persona")
         os.makedirs(config_path, exist_ok=True)
         
-        # Clean description for the file
+        # Clean description for the file, keep catch_phrase
         clean_data = {k: v for k, v in persona_data.items() if k != "description"}
         
         file_path = os.path.join(config_path, f"{name}.json")
@@ -114,10 +94,15 @@ class GGWaveSkill(OVOSSkill):
                 continue
             
             # Assume the plugin name is the pip package name
-            # This is standard for most OVOS plugins
             self.log.info(f"Requesting installation of solver: {solver}")
             self.bus.emit(Message("ovos.pip.install", {"packages": [solver]}))
 
         # 3. Confirmation
-        self.speak(f"Persona {name} has been installed and is ready for use.")
+        # Speak catch_phrase to acknowledge install worked
+        catch_phrase = persona_data.get("catch_phrase")
+        if catch_phrase:
+            self.speak(catch_phrase)
+        else:
+            self.speak(f"Persona {name} has been installed and is ready for use.")
+        
         self.bus.emit(Message("mycroft.audio.play_sound", {"uri": "snd/acknowledge.mp3"}))
