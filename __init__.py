@@ -7,29 +7,32 @@ from ovos_workshop.decorators import intent_handler
 from ovos_config.locations import get_xdg_config_save_path
 from ovos_bus_client.message import Message
 
+__version__ = "0.3.5a7"
+
 
 class GGWaveSkill(OVOSSkill):
-
     def initialize(self):
         self.add_event("ggwave.enabled", self.handle_ggwave_on)
         self.add_event("ggwave.disabled", self.handle_ggwave_off)
-        
+
         # Persona Installation Events
         self.add_event("ovos.persona.install.index", self.handle_install_index)
-        
+
         self.enabled = False
 
     @property
     def persona_store_url(self):
-        return self.settings.get("persona_store_url") or \
-            "https://raw.githubusercontent.com/TigreGotico/ovos-persona-marketplace/master/personas.jsonl"
+        return (
+            self.settings.get("persona_store_url")
+            or "https://raw.githubusercontent.com/TigreGotico/ovos-persona-marketplace/master/personas.jsonl"
+        )
 
     def handle_ggwave_on(self, message):
         self.enabled = True
         self.schedule_event(
             handler=self.handle_ggwave_off,
             when=datetime.datetime.now() + datetime.timedelta(minutes=15),
-            name="ggwave.timeout"
+            name="ggwave.timeout",
         )
 
     def handle_ggwave_off(self, message):
@@ -55,11 +58,11 @@ class GGWaveSkill(OVOSSkill):
     def handle_install_index(self, message):
         index = int(message.data.get("index", -1))
         self.log.info(f"Installing persona at index: {index}")
-        
+
         try:
             response = requests.get(self.persona_store_url)
             response.raise_for_status()
-            lines = response.text.strip().split('\n')
+            lines = response.text.strip().split("\n")
             if 0 <= index < len(lines):
                 persona_data = json.loads(lines[index])
                 self._install_persona(persona_data)
@@ -77,14 +80,14 @@ class GGWaveSkill(OVOSSkill):
         # 1. Save persona.json
         config_path = get_xdg_config_save_path("ovos_persona")
         os.makedirs(config_path, exist_ok=True)
-        
+
         # Clean description for the file, keep catch_phrase
         clean_data = {k: v for k, v in persona_data.items() if k != "description"}
-        
+
         file_path = os.path.join(config_path, f"{name}.json")
         with open(file_path, "w") as f:
             json.dump(clean_data, f, indent=2)
-        
+
         self.log.info(f"Persona saved to: {file_path}")
 
         # 2. Install solver dependencies
@@ -92,7 +95,7 @@ class GGWaveSkill(OVOSSkill):
         for solver in solvers:
             if solver == "ovos-solver-failure-plugin":
                 continue
-            
+
             # Assume the plugin name is the pip package name
             self.log.info(f"Requesting installation of solver: {solver}")
             self.bus.emit(Message("ovos.pip.install", {"packages": [solver]}))
@@ -104,5 +107,7 @@ class GGWaveSkill(OVOSSkill):
             self.speak(catch_phrase)
         else:
             self.speak(f"Persona {name} has been installed and is ready for use.")
-        
-        self.bus.emit(Message("mycroft.audio.play_sound", {"uri": "snd/acknowledge.mp3"}))
+
+        self.bus.emit(
+            Message("mycroft.audio.play_sound", {"uri": "snd/acknowledge.mp3"})
+        )

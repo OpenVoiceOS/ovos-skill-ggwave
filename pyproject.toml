@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ovos-skill-ggwave"
+version = "0.3.5a7"
+description = "voice interface for ggwave plugin"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "OpenVoiceOS", email = "jarbasai@mailfence.com"}
+]
+requires-python = ">=3.10"
+dependencies = [
+    "ovos-workshop>=0.0.15",
+]
+
+[project.optional-dependencies]
+test = [
+    "ovoscope>=0.12.0a1",
+]
+
+[project.urls]
+Homepage = "https://github.com/OpenVoiceOS/ovos-skill-ggwave"
+
+[tool.setuptools]
+package-dir = {ovos_skill_ggwave = "."}
+
+[project.entry-points."ovos.plugin.skill"]
+"ovos-skill-ggwave.openvoiceos" = "ovos_skill_ggwave:GGWaveSkill"
