@@ -18,8 +18,9 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 test = [
-    "ovoscope>=0.12.0a1",
+    "ovoscope>=0.12.0",
     "ovos-padatious",
+    "ovos-adapt-parser",
 ]
 
 [project.urls]
