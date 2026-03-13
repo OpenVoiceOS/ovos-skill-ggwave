@@ -1,8 +1,8 @@
 # Changelog
 
-## [0.3.5a8](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a8) (2026-03-13)
+## [0.3.5a9](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a9) (2026-03-13)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a7...0.3.5a8)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a7...0.3.5a9)
 
 **Merged pull requests:**
 
