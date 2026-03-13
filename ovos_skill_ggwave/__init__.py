@@ -7,8 +7,6 @@ from ovos_workshop.decorators import intent_handler
 from ovos_config.locations import get_xdg_config_save_path
 from ovos_bus_client.message import Message
 
-__version__ = "0.3.5a7"
-
 
 class GGWaveSkill(OVOSSkill):
     def initialize(self):
