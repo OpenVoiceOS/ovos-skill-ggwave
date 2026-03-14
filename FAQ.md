@@ -6,6 +6,70 @@ ggwave encodes binary data as audible tones — sometimes called "audio QR codes
 running a ggwave decoder can receive the data without any network connection. This skill provides
 a voice interface for the OVOS ggwave plugin.
 
+## CI/CD & Testing
+
+### What CI workflows are available?
+
+The skill uses **14 GitHub Actions workflows** from `gh-automations@dev`:
+
+| Workflow | Purpose |
+|----------|---------|
+| `build-tests.yml` | Build/install/test matrix across Python 3.10–3.14 |
+| `coverage.yml` | Pytest coverage report (deploys to GitHub Pages) |
+| `lint.yml` | Ruff linting |
+| `license_check.yml` | License compliance check |
+| `pip_audit.yml` | Security vulnerability scan |
+| `ovoscope.yml` | End-to-end skill tests with Padatious |
+| `skill-check.yml` | Locale coverage, skill.json validity, gitlocalize readiness |
+| `locale-check.yml` | Verifies locale files are included in package build |
+| `repo-health.yml` | Required files check, version block validation |
+| `release-preview.yml` | Next version prediction from PR labels |
+| `release_workflow.yml` | Alpha release on PR merge to `dev` |
+| `publish_stable.yml` | Stable release on PR merge to `master` |
+| `sync-translations.yml` | Sync gitlocalize translation commits |
+| `conventional-label.yml` | Auto-label PRs by commit type |
+
+### How do I run tests locally?
+
+**Unit tests:**
+```bash
+uv run pytest test/unittests/ -v
+```
+
+**End-to-end tests (requires ovos-padatious):**
+```bash
+uv run pytest test/end2end/ -v --timeout=60
+```
+
+### What are the test dependencies?
+
+Declared in `pyproject.toml`:
+```toml
+[project.optional-dependencies]
+test = [
+    "ovoscope>=0.12.0",
+    "ovos-padatious",
+    "ovos-adapt-parser",
+]
+```
+
+Install with: `uv pip install -e .[test]`
+
+### How does translation sync work?
+
+The `sync-translations.yml` workflow runs on push from `gitlocalize-app[bot]` or manual trigger:
+1. Checks out `dev` branch
+2. Runs `scripts/sync_translations.py`
+3. Commits synced translations back to `dev`
+
+Locale files live in `ovos_skill_ggwave/locale/`, translations in `translations/`.
+
+## What is ggwave?
+
+ggwave encodes binary data as audible tones — sometimes called "audio QR codes". Nearby devices
+running a ggwave decoder can receive the data without any network connection. This skill provides
+a voice interface for the OVOS ggwave plugin.
+
 ## How do I enable ggwave by voice?
 
 Say any of:

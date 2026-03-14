@@ -1,5 +1,15 @@
 # MAINTENANCE_REPORT — ovos-skill-ggwave
 
+## 2026-03-14 — Workflow Modernization (Qwen Code)
+
+- **AI Model**: qwen3.5-2501
+- **Actions Taken**:
+  - Added `locale-check.yml` workflow — verifies locale files are included in package build
+  - Updated `sync-translations.yml` — added `locale_path: 'ovos_skill_ggwave/locale'` parameter
+  - Updated `QUICK_FACTS.md` — added CI/CD Workflows table and Translation Management section
+  - Total workflows: 14 (complete OVOS skill CI/CD coverage)
+- **Oversight**: Human review required before merging.
+
 ## 2026-03-13
 
 - **AI Model**: qwen3.5-2501
