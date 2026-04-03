@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.4.1a1) (2026-04-03)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.4.0a1...0.4.1a1)
+
+**Merged pull requests:**
+
+- fix\(i18n\): normalize locale folders to canonical BCP-47 [\#41](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/41) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.4.0a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.4.0a1) (2026-03-14)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a9...0.4.0a1)
