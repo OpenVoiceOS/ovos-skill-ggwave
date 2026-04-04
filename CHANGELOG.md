@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1a2](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.4.1a2) (2026-04-04)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.4.1a1...0.4.1a2)
+
+**Merged pull requests:**
+
+- ci: modernize GitHub workflows [\#43](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/43) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.4.1a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.4.1a1) (2026-04-03)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.4.0a1...0.4.1a1)
