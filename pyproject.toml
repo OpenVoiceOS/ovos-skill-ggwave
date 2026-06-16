@@ -12,14 +12,14 @@ authors = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "ovos-plugin-manager>=2.4.0a1",
-    "ovos-workshop>=0.0.15",
+    "ovos-plugin-manager>=2.1.0,<3.0.0",
+    "ovos-workshop>=0.0.15,<9.0.0",
 ]
 dynamic = ["version"]
 
 [project.optional-dependencies]
 test = [
-    "ovoscope>=0.12.0",
+    "ovoscope>=0.12.0,<1.0.0",
     "ovos-padatious",
     "ovos-adapt-parser",
 ]
