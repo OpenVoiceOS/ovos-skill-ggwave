@@ -12,6 +12,7 @@ authors = [
 ]
 requires-python = ">=3.10"
 dependencies = [
+    "ovos-plugin-manager>=2.4.0a1",
     "ovos-workshop>=0.0.15",
 ]
 dynamic = ["version"]
@@ -42,5 +43,5 @@ ovos_skill_ggwave = [
     "locale/*/*.json",
 ]
 
-[project.entry-points."ovos.plugin.skill"]
+[project.entry-points."opm.skill"]
 "ovos-skill-ggwave.openvoiceos" = "ovos_skill_ggwave:GGWaveSkill"
