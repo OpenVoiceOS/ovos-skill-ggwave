@@ -42,5 +42,5 @@ ovos_skill_ggwave = [
     "locale/*/*.json",
 ]
 
-[project.entry-points."ovos.plugin.skill"]
+[project.entry-points."opm.skill"]
 "ovos-skill-ggwave.openvoiceos" = "ovos_skill_ggwave:GGWaveSkill"
