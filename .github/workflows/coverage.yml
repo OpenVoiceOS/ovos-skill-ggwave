@@ -13,5 +13,6 @@ jobs:
       python_version: '3.11'
       coverage_source: 'ovos_skill_ggwave'
       test_path: 'test/'
-      install_extras: ''
+      system_deps: 'swig libfann-dev'
+      test_extras: 'test'
       min_coverage: 0
