@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.2a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.4.2a1) (2026-06-17)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.4.1a3...0.4.2a1)
+
+**Merged pull requests:**
+
+- fix: require ovos-plugin-manager\>=2.1.0 for opm.\* entry points and cap ovos-\* deps at next major [\#48](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/48) ([JarbasAl](https://github.com/JarbasAl))
+- fix: use canonical opm.\* entry-point group [\#47](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/47) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.4.1a3](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.4.1a3) (2026-04-09)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.4.1a2...0.4.1a3)
