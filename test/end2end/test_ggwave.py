@@ -40,7 +40,7 @@ class TestEnableGGWave(unittest.TestCase):
     """End-to-end tests for the 'enable ggwave' intent."""
 
     def test_enable_ggwave_utterance_matched_and_emits_enable(self) -> None:
-        """'enable ggwave' matches enable.ggwave.intent, emits ovos.ggwave.enable and speaks."""
+        """'enable ggwave' matches enable_ggwave.intent, emits ovos.ggwave.enable and speaks."""
         session = _padatious_session("e2e-enable-1")
         utterance = _utterance_message("enable ggwave", session)
 
@@ -53,7 +53,7 @@ class TestEnableGGWave(unittest.TestCase):
                     f"{SKILL_ID}.activate", data={}, context={"skill_id": SKILL_ID}
                 ),
                 Message(
-                    f"{SKILL_ID}:enable.ggwave.intent",
+                    f"{SKILL_ID}:enable_ggwave.intent",
                     data={"utterance": "enable ggwave", "lang": "en-US"},
                     context={"skill_id": SKILL_ID},
                 ),
@@ -95,7 +95,7 @@ class TestDisableGGWave(unittest.TestCase):
     """End-to-end tests for the 'disable ggwave' intent."""
 
     def test_disable_ggwave_utterance_matched_and_emits_disable(self) -> None:
-        """'disable ggwave' matches disable.ggwave.intent, emits ovos.ggwave.disable and speaks."""
+        """'disable ggwave' matches disable_ggwave.intent, emits ovos.ggwave.disable and speaks."""
         from ovoscope import get_minicroft
 
         minicroft = get_minicroft([SKILL_ID])
@@ -115,7 +115,7 @@ class TestDisableGGWave(unittest.TestCase):
                         f"{SKILL_ID}.activate", data={}, context={"skill_id": SKILL_ID}
                     ),
                     Message(
-                        f"{SKILL_ID}:disable.ggwave.intent",
+                        f"{SKILL_ID}:disable_ggwave.intent",
                         data={"utterance": "disable ggwave", "lang": "en-US"},
                         context={"skill_id": SKILL_ID},
                     ),

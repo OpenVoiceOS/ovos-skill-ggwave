@@ -7,7 +7,7 @@
 | **Entry point group** | `ovos.plugin.skill` |
 | **Main class** | `GGWaveSkill` — `__init__.py:8` |
 | **Intent pipeline** | Padatious |
-| **Intents** | `enable.ggwave.intent`, `disable.ggwave.intent` |
+| **Intents** | `enable_ggwave.intent`, `disable_ggwave.intent` |
 | **Outbound messages** | `ovos.ggwave.enable`, `ovos.ggwave.disable` |
 | **Inbound messages** | `ggwave.enabled`, `ggwave.disabled` |
 | **Auto-timeout** | 15 minutes after enable |

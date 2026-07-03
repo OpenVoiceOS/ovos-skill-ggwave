@@ -174,7 +174,7 @@
       }
     },
     {
-      "type": "ovos-skill-ggwave.openvoiceos:enable.ggwave.intent",
+      "type": "ovos-skill-ggwave.openvoiceos:enable_ggwave.intent",
       "data": {
         "utterances": [
           "enable ggwave"
@@ -364,7 +364,7 @@
         "utterance": "enabling audio QR codes for 15 minutes",
         "expect_response": false,
         "meta": {
-          "dialog": "ggwave.enabled",
+          "dialog": "ggwave_enabled",
           "data": {},
           "skill": "ovos-skill-ggwave.openvoiceos"
         },
