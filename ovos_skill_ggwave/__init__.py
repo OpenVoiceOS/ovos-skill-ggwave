@@ -36,22 +36,22 @@ class GGWaveSkill(OVOSSkill):
     def handle_ggwave_off(self, message):
         self.enabled = False
 
-    @intent_handler("enable.ggwave.intent")
+    @intent_handler("enable_ggwave.intent")
     def handle_enable_ggwave(self, message):
         if not self.enabled:
             self.bus.emit(message.forward("ovos.ggwave.enable"))
-            self.speak_dialog("ggwave.enabled")
+            self.speak_dialog("ggwave_enabled")
         else:
-            self.speak_dialog("ggwave.already.enabled")
+            self.speak_dialog("ggwave_already_enabled")
 
-    @intent_handler("disable.ggwave.intent")
+    @intent_handler("disable_ggwave.intent")
     def handle_disable_ggwave(self, message):
         if self.enabled:
             self.bus.emit(message.forward("ovos.ggwave.disable"))
             self.cancel_scheduled_event("ggwave.timeout")
-            self.speak_dialog("ggwave.disabled")
+            self.speak_dialog("ggwave_disabled")
         else:
-            self.speak_dialog("ggwave.already.disabled")
+            self.speak_dialog("ggwave_already_disabled")
 
     def handle_install_index(self, message):
         index = int(message.data.get("index", -1))

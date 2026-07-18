@@ -102,7 +102,7 @@ class TestGGWaveSkillHandlers(unittest.TestCase):
         self.skill.handle_enable_ggwave(msg)
 
         self.assertEqual(len(emitted), 1)
-        self.skill.speak_dialog.assert_called_once_with("ggwave.enabled")
+        self.skill.speak_dialog.assert_called_once_with("ggwave_enabled")
 
     def test_handle_enable_ggwave_when_already_enabled_speaks_already_enabled(
         self,
@@ -115,7 +115,7 @@ class TestGGWaveSkillHandlers(unittest.TestCase):
         msg = Message("recognizer_loop:utterance", {"utterances": ["enable ggwave"]})
         self.skill.handle_enable_ggwave(msg)
 
-        self.skill.speak_dialog.assert_called_once_with("ggwave.already.enabled")
+        self.skill.speak_dialog.assert_called_once_with("ggwave_already_enabled")
         # ovos.ggwave.enable must NOT be emitted
         forwarded_types = [c.args[0].msg_type for c in self.bus.emit.call_args_list]
         self.assertNotIn("ovos.ggwave.enable", forwarded_types)
@@ -137,7 +137,7 @@ class TestGGWaveSkillHandlers(unittest.TestCase):
         self.skill.handle_disable_ggwave(msg)
 
         self.assertEqual(len(emitted), 1)
-        self.skill.speak_dialog.assert_called_once_with("ggwave.disabled")
+        self.skill.speak_dialog.assert_called_once_with("ggwave_disabled")
 
     def test_handle_disable_ggwave_when_enabled_cancels_timeout(self) -> None:
         """handle_disable_ggwave cancels the 'ggwave.timeout' scheduled event."""
@@ -161,7 +161,7 @@ class TestGGWaveSkillHandlers(unittest.TestCase):
         msg = Message("recognizer_loop:utterance", {"utterances": ["disable ggwave"]})
         self.skill.handle_disable_ggwave(msg)
 
-        self.skill.speak_dialog.assert_called_once_with("ggwave.already.disabled")
+        self.skill.speak_dialog.assert_called_once_with("ggwave_already_disabled")
         forwarded_types = [c.args[0].msg_type for c in self.bus.emit.call_args_list]
         self.assertNotIn("ovos.ggwave.disable", forwarded_types)
 

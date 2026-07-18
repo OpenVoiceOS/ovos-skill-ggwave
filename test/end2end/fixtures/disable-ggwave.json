@@ -189,7 +189,7 @@
       }
     },
     {
-      "type": "ovos-skill-ggwave.openvoiceos:disable.ggwave.intent",
+      "type": "ovos-skill-ggwave.openvoiceos:disable_ggwave.intent",
       "data": {
         "utterances": [
           "disable ggwave"
@@ -320,7 +320,7 @@
         "utterance": "audio QR codes already disabled",
         "expect_response": false,
         "meta": {
-          "dialog": "ggwave.already.disabled",
+          "dialog": "ggwave_already_disabled",
           "data": {},
           "skill": "ovos-skill-ggwave.openvoiceos"
         },
