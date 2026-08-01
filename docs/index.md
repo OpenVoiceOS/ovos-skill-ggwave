@@ -2,9 +2,9 @@
 
 Voice interface for the [ggwave](https://github.com/ggerganov/ggwave) audio-data-over-sound plugin.
 
-ggwave encodes binary data as audible tones (audio QR codes) that can be decoded by nearby devices.
-This skill lets users enable and disable ggwave transmission via voice commands, with an automatic
-15-minute timeout to prevent leaving ggwave on indefinitely.
+ggwave encodes binary data as audible tones (audio QR codes) that nearby devices can decode.
+This skill lets users enable and disable ggwave transmission with voice commands. A 15-minute
+timeout disables ggwave automatically, so it does not stay on indefinitely.
 
 ## Architecture
 
@@ -29,14 +29,14 @@ Padatious pipeline
 
 | Class | File | Description |
 |---|---|---|
-| `GGWaveSkill` | `__init__.py:8` | Main skill class; manages enabled state and bus events |
+| `GGWaveSkill` | `__init__.py:8` | Main skill class. Manages enabled state and bus events |
 
 ## Intent Handlers
 
 | Handler | Intent file | Trigger examples |
 |---|---|---|
-| `GGWaveSkill.handle_enable_ggwave` — `__init__.py:26` | `enable.ggwave.intent` | "enable ggwave", "start audio codes", "ggwave on" |
-| `GGWaveSkill.handle_disable_ggwave` — `__init__.py:34` | `disable.ggwave.intent` | "disable ggwave", "stop audio codes", "ggwave off" |
+| `GGWaveSkill.handle_enable_ggwave` (`__init__.py:26`) | `enable.ggwave.intent` | "enable ggwave", "start audio codes", "ggwave on" |
+| `GGWaveSkill.handle_disable_ggwave` (`__init__.py:34`) | `disable.ggwave.intent` | "disable ggwave", "stop audio codes", "ggwave off" |
 
 ## Bus Events
 
@@ -49,8 +49,8 @@ Padatious pipeline
 
 ## State
 
-`GGWaveSkill.enabled` (`__init__.py:13`) — boolean tracking whether ggwave is currently active.
-Updated by both the bus event handlers and the intent handlers.
+`GGWaveSkill.enabled` (`__init__.py:13`) is a boolean that tracks whether ggwave is active.
+Both the bus event handlers and the intent handlers update it.
 
 ## Locales
 
@@ -58,8 +58,8 @@ Supported: `ca-es`, `da-dk`, `de-de`, `es-es`, `eu`, `gl-es`, `it-it`, `pt-br`, 
 
 ## Testing
 
-- **Unit tests**: `test/unittests/test_skill.py` — FakeBus, handler logic in isolation
-- **End-to-end tests**: `test/end2end/test_ggwave.py` — ovoscope, full intent + message sequence
+- **Unit tests**: `test/unittests/test_skill.py`. Uses FakeBus to test handler logic in isolation
+- **End-to-end tests**: `test/end2end/test_ggwave.py`. Uses ovoscope to test the full intent and message sequence
 
 ```bash
 # Unit tests
