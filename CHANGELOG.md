@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.4a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.4.4a1) (2026-08-13)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.4.3a2...0.4.4a1)
+
+**Merged pull requests:**
+
+- fix: register ggwave.entity + golden-utterance e2e suite [\#57](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/57) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.4.3a2](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.4.3a2) (2026-08-01)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.4.3a1...0.4.3a2)
@@ -110,19 +118,19 @@
 
 ## [0.3.5a3](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a3) (2024-12-02)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a1...0.3.5a3)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a2...0.3.5a3)
 
 **Merged pull requests:**
 
 - import galician translations [\#21](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/21) ([JarbasAl](https://github.com/JarbasAl))
 
-## [0.3.5a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a1) (2024-11-25)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a2...0.3.5a1)
-
 ## [0.3.5a2](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a2) (2024-11-25)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/V0.3.4...0.3.5a2)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a1...0.3.5a2)
+
+## [0.3.5a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a1) (2024-11-25)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/V0.3.4...0.3.5a1)
 
 **Merged pull requests:**
 
