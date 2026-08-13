@@ -17,8 +17,6 @@ Run:
 
 import unittest
 
-import pytest
-
 from ovos_bus_client.message import Message
 from ovos_bus_client.session import Session
 from ovoscope import get_minicroft, CaptureSession, PADATIOUS_PIPELINE
@@ -39,20 +37,6 @@ def _candidates(intent_label: str) -> set:
 
 ENABLE_INTENT = _candidates("enable_ggwave.intent")
 DISABLE_INTENT = _candidates("disable_ggwave.intent")
-
-# KNOWN GAP -- see the matching constant/comment in test_intents_en_us.py.
-# On this alpha stack (ovos-workshop 8.3.0a1, ovos-padatious 2.0.1a2,
-# ovoscope 0.22.1a1) the handler body bound via @intent_handler("*.intent")
-# never runs: OVOSSkill.register_intent_file() binds the bus listener to
-# the ".intent"-suffixed event name, but the intent service emits the
-# matched-intent message under the stripped name. NOTE: this also means
-# TestAlreadyEnabled/TestAlreadyDisabled's "no side-effect emitted" checks
-# below are vacuously true under this bug (the handler body -- and thus any
-# side effect -- never runs at all, regardless of the already-enabled/
-# disabled branch) -- kept as-is since they still correctly describe the
-# intended contract and will start actually exercising it once the
-# upstream naming mismatch is fixed.
-_HANDLER_BINDING_XFAIL = "known gap: handler binding uses '.intent'-suffixed event name but the intent service emits the stripped name on this alpha stack (ovos-workshop 8.3.0a1 / ovos-padatious 2.0.1a2) -- handler body never runs. Intent *routing* itself is correct."
 
 
 def _assert_any_in(candidates, types):
@@ -152,14 +136,7 @@ class TestBusEventHandlers(_StateTestCase):
 
         _assert_any_in(DISABLE_INTENT, types)
 
-    @pytest.mark.xfail(strict=True, reason=_HANDLER_BINDING_XFAIL)
     def test_disable_intent_cancels_timeout(self):
-        # KNOWN GAP: see _HANDLER_BINDING_XFAIL. handle_disable_ggwave's body
-        # (which emits ovos.ggwave.disable and cancels the scheduled
-        # timeout) never runs on this alpha stack, because the intent
-        # service emits the matched-intent message under the stripped
-        # "<skill_id>:disable_ggwave" name while OVOSSkill.register_intent_file
-        # bound the handler's bus listener to the ".intent"-suffixed name.
         self.minicroft.bus.emit(Message("ggwave.enabled"))
         self.assertIn(TIMEOUT_EVENT, self._scheduled_event_names())
 

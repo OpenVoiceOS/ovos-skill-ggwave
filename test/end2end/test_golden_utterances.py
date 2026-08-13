@@ -7,14 +7,9 @@ skill's own vocab (``ggwave.entity`` synonyms: "audio codes", "audio qr
 code", "data over sound").
 
 This suite asserts *intent routing only* (the ``<skill_id>:<intent>``
-message type observed on the bus), not handler-body side effects
-(``ovos.ggwave.enable``/``disable``). See ``test_intents_en_us.py``'s
-``_HANDLER_BINDING_XFAIL`` docstring for why: on the pinned alpha stack used
-here, the handler body bound via ``@intent_handler("*.intent")`` never runs
-(a naming mismatch between how ``OVOSSkill.register_intent_file`` binds the
-bus listener and what the intent service actually emits) -- an upstream gap
-already xfailed there, not a defect in this skill. Routing itself is
-unaffected and is what this golden suite is scoped to verify.
+message type observed on the bus). Handler-body side effects
+(``ovos.ggwave.enable``/``disable``) are covered directly in
+``test_intents_en_us.py`` and ``test_ggwave_state.py``.
 
 Run:
     uv run pytest test/end2end/test_golden_utterances.py -v
