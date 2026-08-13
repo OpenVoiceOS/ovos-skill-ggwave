@@ -16,8 +16,6 @@ Run:
 
 import unittest
 
-import pytest
-
 from ovos_bus_client.message import Message
 from ovos_bus_client.session import Session
 from ovoscope import get_minicroft, CaptureSession, PADATIOUS_PIPELINE
@@ -41,26 +39,6 @@ def _candidates(intent_label: str) -> set:
 
 ENABLE_INTENT = _candidates("enable_ggwave.intent")
 DISABLE_INTENT = _candidates("disable_ggwave.intent")
-
-# KNOWN GAP (finding, not a skill defect): on the pinned alpha stack used by
-# this suite (ovos-workshop==8.3.0a1, ovos-padatious==2.0.1a2,
-# ovoscope==0.22.1a1), OVOSSkill.register_intent_file() registers the
-# handler's bus listener under "<skill_id>:<name>.intent" (add_event() call
-# in ovos_workshop/skills/ovos.py), but the intent service actually emits
-# the matched-intent message under the *stripped* "<skill_id>:<name>"
-# (verified directly against the live bus stream: only
-# ["recognizer_loop:utterance", "<skill_id>.activate",
-# "<skill_id>:enable_ggwave"] are ever observed -- no
-# "mycroft.skill.handler.start" and no "ovos.ggwave.enable" follow). The
-# intent-routing message itself IS correct (see assertIntentMatched above,
-# which passes) -- only the *handler-body side effect* never fires, because
-# the handler is never invoked at all. This is the same OVOS-INTENT-2
-# padatious-naming migration class of bug documented in
-# ovos-skill-volume's golden suite (ovos-skill-parrot#119), one layer
-# deeper: there the *match* message name drifted; here the *handler
-# binding* itself drifted out of sync with it. Not something to patch in
-# this skill repo -- flagging for the ovos-workshop/ovos-padatious pairing.
-_HANDLER_BINDING_XFAIL = "known gap: handler binding uses '.intent'-suffixed event name but the intent service emits the stripped name on this alpha stack (ovos-workshop 8.3.0a1 / ovos-padatious 2.0.1a2) -- handler body never runs, so its ovos.ggwave.(en|dis)able side effect is never observed. Intent *routing* itself is correct (see assertIntentMatched)."
 
 
 def _session() -> Session:
@@ -123,7 +101,6 @@ class TestEnableRouting(_RoutingTestCase):
         messages = self._capture("enable ggwave")
         self.assertIntentMatched(messages, ENABLE_INTENT)
 
-    @pytest.mark.xfail(strict=True, reason=_HANDLER_BINDING_XFAIL)
     def test_enable_ggwave_side_effect(self):
         messages = self._capture("enable ggwave")
         self.assertEmitted(messages, "ovos.ggwave.enable")
@@ -132,7 +109,6 @@ class TestEnableRouting(_RoutingTestCase):
         messages = self._capture("turn on audio codes")
         self.assertIntentMatched(messages, ENABLE_INTENT)
 
-    @pytest.mark.xfail(strict=True, reason=_HANDLER_BINDING_XFAIL)
     def test_turn_on_audio_codes_side_effect(self):
         messages = self._capture("turn on audio codes")
         self.assertEmitted(messages, "ovos.ggwave.enable")
@@ -141,7 +117,6 @@ class TestEnableRouting(_RoutingTestCase):
         messages = self._capture("activate data over sound")
         self.assertIntentMatched(messages, ENABLE_INTENT)
 
-    @pytest.mark.xfail(strict=True, reason=_HANDLER_BINDING_XFAIL)
     def test_activate_data_over_sound_side_effect(self):
         messages = self._capture("activate data over sound")
         self.assertEmitted(messages, "ovos.ggwave.enable")
@@ -156,7 +131,6 @@ class TestDisableRouting(_RoutingTestCase):
         messages = self._capture("disable ggwave")
         self.assertIntentMatched(messages, DISABLE_INTENT)
 
-    @pytest.mark.xfail(strict=True, reason=_HANDLER_BINDING_XFAIL)
     def test_disable_ggwave_side_effect(self):
         self.minicroft.bus.emit(Message("ggwave.enabled"))
         messages = self._capture("disable ggwave")
@@ -167,7 +141,6 @@ class TestDisableRouting(_RoutingTestCase):
         messages = self._capture("turn off audio data")
         self.assertIntentMatched(messages, DISABLE_INTENT)
 
-    @pytest.mark.xfail(strict=True, reason=_HANDLER_BINDING_XFAIL)
     def test_turn_off_audio_data_side_effect(self):
         self.minicroft.bus.emit(Message("ggwave.enabled"))
         messages = self._capture("turn off audio data")
