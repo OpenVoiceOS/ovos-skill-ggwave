@@ -1,2 +1,2 @@
-(enable|turn on|start|activate|allow) {ggwave}
-{ggwave} (on|enabled)
+(enable|turn on|start|activate|allow) (ggwave|audio code|audio codes|audio qr code|audio qr codes|audio data|data over sound)
+(ggwave|audio code|audio codes|audio qr code|audio qr codes|audio data|data over sound) (on|enabled)

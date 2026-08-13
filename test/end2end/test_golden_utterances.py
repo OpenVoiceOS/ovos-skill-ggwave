@@ -34,39 +34,24 @@ LANG = "en-US"
 
 GOLDEN_PATH = Path(__file__).parent / "golden_utterances.jsonl"
 
-# FINDING (real, not a test artifact -- see the xfail reason below): the
-# 4 utterances marked xfail are false-positively claimed by enable_ggwave/
-# disable_ggwave at padatious-high. Root cause: enable_ggwave.intent/
-# disable_ggwave.intent's {ggwave} slot is matched by padacioso's fuzzy
-# template matcher as an effectively open capture once the literal keyword
-# ("turn on"/"turn off"/"enable"/"stop") is present, regardless of whether
-# ggwave.entity's registered values (this skill does not currently call
-# register_entity_file for it) constrain the slot. This is an upstream
-# padatious/padacioso + ovos-workshop constraint, not something fixable in
-# this skill repo alone -- see padatious#95 and workshop#528. Fixing it here
-# would mean redesigning the intent (eg. switching to a closed-vocabulary
-# Adapt intent instead of a free Padatious slot), out of scope for this
-# test-suite upgrade.
+# FIXED: enable_ggwave.intent/disable_ggwave.intent used to carry an open
+# {ggwave} padatious slot, which padacioso's fuzzy template matcher treated
+# as an effectively unconstrained capture once the literal keyword ("turn
+# on"/"turn off"/"enable"/"stop") was present -- so "turn on the lights",
+# "stop the timer", "turn off the music" and "enable do not disturb" were
+# all false-positively claimed at padatious-high. Root-caused and fixed by
+# replacing the open slot with the closed vocabulary from ggwave.entity
+# inlined directly into the templates (the same closed-vocabulary pattern
+# every other locale in this skill already used -- en-US was the outlier).
+# The 4 rows below now assert the false positives are gone.
 NEGATIVE_UTTERANCES = [
     ("what's the weather", "ovos-skill-weather.openvoiceos"),
     ("play some music", "ovos-skill-music.openvoiceos"),
     ("set a timer for 5 minutes", "ovos-skill-alerts.openvoiceos"),
-    pytest.param(
-        ("turn on the lights", "ovos-skill-homeassistant.openvoiceos"),
-        marks=pytest.mark.xfail(strict=True, reason="open {ggwave} slot false-positive, see module docstring finding"),
-    ),
-    pytest.param(
-        ("stop the timer", "ovos-skill-alerts.openvoiceos"),
-        marks=pytest.mark.xfail(strict=True, reason="open {ggwave} slot false-positive, see module docstring finding"),
-    ),
-    pytest.param(
-        ("turn off the music", "ovos-skill-music.openvoiceos"),
-        marks=pytest.mark.xfail(strict=True, reason="open {ggwave} slot false-positive, see module docstring finding"),
-    ),
-    pytest.param(
-        ("enable do not disturb", "ovos-skill-volume.openvoiceos"),
-        marks=pytest.mark.xfail(strict=True, reason="open {ggwave} slot false-positive, see module docstring finding"),
-    ),
+    ("turn on the lights", "ovos-skill-homeassistant.openvoiceos"),
+    ("stop the timer", "ovos-skill-alerts.openvoiceos"),
+    ("turn off the music", "ovos-skill-music.openvoiceos"),
+    ("enable do not disturb", "ovos-skill-volume.openvoiceos"),
 ]
 
 
