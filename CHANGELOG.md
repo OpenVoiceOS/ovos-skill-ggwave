@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.5a3](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.4.5a3) (2026-08-13)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.4.5a2...0.4.5a3)
+
+**Merged pull requests:**
+
+- chore: drop orphaned entity files [\#63](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/63) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.4.5a2](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.4.5a2) (2026-08-13)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.4.5a1...0.4.5a2)
