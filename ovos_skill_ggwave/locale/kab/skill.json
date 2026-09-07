@@ -1,0 +1,16 @@
+{
+  "skill_id": "ovos-skill-ggwave.openvoiceos",
+  "source": "https://github.com/OpenVoiceOS/ovos-skill-ggwave",
+  "package_name": "ovos-skill-ggwave",
+  "extra_plugins": {
+    "listener": ["ovos-audio-transformer-plugin-ggwave"]
+  },
+  "name": "Tazmert GGWave",
+  "description": "Ugar n umeslay i uzegrir ggwave.",
+  "examples": [
+    "senker ggwave",
+    "qbel isefka n umeslay",
+    "sens tingalin n umeslay"
+  ],
+  "tags": ["ugar n umeslay", "azegrir n umeslay", "ggwave"]
+}
