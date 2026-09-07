@@ -15,6 +15,7 @@ Run:
     uv run pytest test/end2end/ -v
 """
 
+import time
 import unittest
 
 from ovos_bus_client.message import Message
@@ -24,7 +25,10 @@ from ovoscope import get_minicroft, CaptureSession, PADATIOUS_PIPELINE
 from ovos_skill_ggwave import GGWaveSkill
 
 SKILL_ID = "ovos-skill-ggwave.openvoiceos"
-TIMEOUT_EVENT = f"{SKILL_ID}:ggwave.timeout"
+# The legacy scheduler names a one-shot event "<skill_id>:<name>"; a
+# SCHEDULER-1-capable scheduler names the topic it fires "<skill_id>.<name>"
+# instead. Accept either so the assertion holds across ovos-workshop releases.
+TIMEOUT_EVENT_CANDIDATES = {f"{SKILL_ID}:ggwave.timeout", f"{SKILL_ID}.ggwave.timeout"}
 
 
 def _candidates(intent_label: str) -> set:
@@ -62,7 +66,8 @@ def _utterance(utt: str, session: Session) -> Message:
 class _StateTestCase(unittest.TestCase):
     def setUp(self):
         self.minicroft = get_minicroft(
-            skill_ids=[], extra_skills={SKILL_ID: GGWaveSkill}
+            skill_ids=[], extra_skills={SKILL_ID: GGWaveSkill},
+            enable_event_scheduler=True,
         )
 
     def tearDown(self):
@@ -72,7 +77,25 @@ class _StateTestCase(unittest.TestCase):
     def skill(self):
         return self.minicroft.plugin_skills[SKILL_ID].instance
 
+    def _wait_for_scheduler_requests(self, timeout=10):
+        # OVOSSkill.schedule_event()/cancel_scheduled_event() hand the
+        # request to a background sender thread and return immediately
+        # (ovos_workshop.skills.ovos.OVOSSkill._send_to_scheduler). Wait for
+        # that queue to drain, but with a deadline: the workshop's own
+        # _scheduler_requests_sent() is an unbounded Queue.join(), and a
+        # scheduler request that never returns must fail this test, not hang
+        # the CI job.
+        requests = self.skill._scheduler_requests
+        deadline = time.monotonic() + timeout
+        while requests.unfinished_tasks and time.monotonic() < deadline:
+            time.sleep(0.05)
+        self.assertEqual(
+            requests.unfinished_tasks, 0,
+            f"scheduler requests still unsent after {timeout}s",
+        )
+
     def _scheduled_event_names(self):
+        self._wait_for_scheduler_requests()
         return [name for name, _ in self.skill.event_scheduler.events.events]
 
     def _capture(self, utterance: str, session_id: str):
@@ -118,7 +141,7 @@ class TestBusEventHandlers(_StateTestCase):
         self.minicroft.bus.emit(Message("ggwave.enabled"))
 
         self.assertTrue(self.skill.enabled)
-        self.assertIn(TIMEOUT_EVENT, self._scheduled_event_names())
+        _assert_any_in(TIMEOUT_EVENT_CANDIDATES, self._scheduled_event_names())
 
     def test_disabled_event_clears_state(self):
         self.minicroft.bus.emit(Message("ggwave.enabled"))
@@ -129,7 +152,7 @@ class TestBusEventHandlers(_StateTestCase):
 
     def test_disable_intent_routes_while_timeout_pending(self):
         self.minicroft.bus.emit(Message("ggwave.enabled"))
-        self.assertIn(TIMEOUT_EVENT, self._scheduled_event_names())
+        _assert_any_in(TIMEOUT_EVENT_CANDIDATES, self._scheduled_event_names())
 
         messages = self._capture("disable ggwave", "e2e-cancel-timeout")
         types = [m.msg_type for m in messages]
@@ -138,14 +161,40 @@ class TestBusEventHandlers(_StateTestCase):
 
     def test_disable_intent_cancels_timeout(self):
         self.minicroft.bus.emit(Message("ggwave.enabled"))
-        self.assertIn(TIMEOUT_EVENT, self._scheduled_event_names())
+        _assert_any_in(TIMEOUT_EVENT_CANDIDATES, self._scheduled_event_names())
 
         messages = self._capture("disable ggwave", "e2e-cancel-timeout")
         types = [m.msg_type for m in messages]
 
         _assert_any_in(DISABLE_INTENT, types)
         self.assertIn("ovos.ggwave.disable", types)
-        self.assertNotIn(TIMEOUT_EVENT, self._scheduled_event_names())
+        self.assertFalse(TIMEOUT_EVENT_CANDIDATES & set(self._scheduled_event_names()))
+
+    def test_timeout_actually_fires_and_disables(self):
+        """The scheduled ggwave.timeout event must really reach
+        handle_ggwave_off, not just appear in the scheduler's event list."""
+        from unittest.mock import patch
+
+        # Shorten the 15-minute timeout to 1s through the skill's own
+        # constant. The skill schedules a number of seconds, so the event is
+        # due 1s from now whatever the box's timezone is (a UTC runner with
+        # the default America/Chicago configuration included).
+        with patch("ovos_skill_ggwave.TIMEOUT_SECONDS", 1):
+            self.minicroft.bus.emit(Message("ggwave.enabled"))
+
+        self.assertTrue(self.skill.enabled)
+
+        # A generous bound: the scheduler backend ticks on its own interval
+        # and a loaded CI runner can be slow to service it, but 20s is still
+        # a tiny fraction of the real 15-minute timeout under test.
+        deadline = time.monotonic() + 20
+        while time.monotonic() < deadline and self.skill.enabled:
+            time.sleep(0.1)
+
+        self.assertFalse(
+            self.skill.enabled,
+            "ggwave.timeout did not fire handle_ggwave_off within 20s",
+        )
 
 
 if __name__ == "__main__":

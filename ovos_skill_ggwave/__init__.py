@@ -1,4 +1,3 @@
-import datetime
 import json
 import os
 import requests
@@ -6,6 +5,12 @@ from ovos_workshop.skills.ovos import OVOSSkill
 from ovos_workshop.decorators import intent_handler
 from ovos_config.locations import get_xdg_config_save_path
 from ovos_bus_client.message import Message
+
+# ggwave switches itself off after this many seconds. A number of seconds
+# is scheduled relative to now, so it is right whatever the box's timezone
+# is; a naive datetime is read in the OVOS configured timezone and fires
+# hours off on a box whose system timezone differs.
+TIMEOUT_SECONDS = 15 * 60
 
 
 class GGWaveSkill(OVOSSkill):
@@ -29,7 +34,7 @@ class GGWaveSkill(OVOSSkill):
         self.enabled = True
         self.schedule_event(
             handler=self.handle_ggwave_off,
-            when=datetime.datetime.now() + datetime.timedelta(minutes=15),
+            when=TIMEOUT_SECONDS,
             name="ggwave.timeout",
         )
 
