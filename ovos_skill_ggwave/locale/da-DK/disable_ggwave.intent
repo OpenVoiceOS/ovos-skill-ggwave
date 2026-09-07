@@ -1,2 +1,2 @@
-(deaktiver|stop|afvis|luk ned) {ggwave}
-{ggwave} fra
+(deaktiver|stop|afvis|luk ned|disallow|lukning) (ggwave|lydkode|lydkoder|lyd-qr-kode|lyd-qr-koder|lyddata)
+(ggwave|lydkode|lydkoder|lyd-qr-kode|lyd-qr-koder|lyddata) fra
