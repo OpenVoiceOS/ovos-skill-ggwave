@@ -21,7 +21,6 @@ dynamic = ["version"]
 test = [
     "ovoscope>=1.6.7a1,<2.0.0",
     "ovos-padatious",
-    "ovos-adapt-parser",
 ]
 
 [project.urls]
