@@ -1,0 +1,16 @@
+{
+  "skill_id": "ovos-skill-ggwave.openvoiceos",
+  "source": "https://github.com/OpenVoiceOS/ovos-skill-ggwave",
+  "package_name": "ovos-skill-ggwave",
+  "extra_plugins": {
+    "listener": ["ovos-audio-transformer-plugin-ggwave"]
+  },
+  "name": "GGWave",
+  "description": "Permet d'échanger des données audio avec ggwave.",
+  "examples": [
+    "Démarre ggwave",
+    "Autorise les données audio",
+    "Désactive les codes audio"
+  ],
+  "tags": ["interface vocale", "audio", "ggwave"]
+}
