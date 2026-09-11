@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0a2](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.0a2) (2026-09-11)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.0a1...0.5.0a2)
+
+**Merged pull requests:**
+
+- translate\(de-DE\): restore forgotten skill.json [\#65](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/65) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.5.0a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.0a1) (2026-09-11)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.4.5a3...0.5.0a1)
