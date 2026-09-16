@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.1a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.1a1) (2026-09-16)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.0a2...0.5.1a1)
+
+**Merged pull requests:**
+
+- fix: wait for the scheduler sender thread before reading scheduled events [\#67](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/67) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.5.0a2](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.0a2) (2026-09-11)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.0a1...0.5.0a2)
