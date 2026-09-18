@@ -1,0 +1,5 @@
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "activar ggwave", "lang": "gl-ES", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ggwave activado", "lang": "gl-ES", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "comezar código de audio", "lang": "gl-ES", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "desactivar ggwave", "lang": "gl-ES", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "parar código de audio", "lang": "gl-ES", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
