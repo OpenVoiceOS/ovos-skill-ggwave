@@ -1,0 +1,6 @@
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "aktiviere ggwave", "lang": "de-DE", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ggwave an", "lang": "de-DE", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "Audiodaten zulassen", "lang": "de-DE", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "Deaktiviere ggwave", "lang": "de-DE", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ggwave ausschalten", "lang": "de-DE", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "Audiocode deaktivieren", "lang": "de-DE", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
