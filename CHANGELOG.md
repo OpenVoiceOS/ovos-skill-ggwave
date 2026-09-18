@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.3a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.3a1) (2026-09-18)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.2a1...0.5.3a1)
+
+**Merged pull requests:**
+
+- fix: drop upper-bound caps on OVOS dependencies [\#70](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/70) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.5.2a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.2a1) (2026-09-18)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.1a2...0.5.2a1)
