@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.2a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.2a1) (2026-09-18)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.1a2...0.5.2a1)
+
+**Merged pull requests:**
+
+- fix\(locale\): translate the English line in de-DE enable\_ggwave.intent [\#76](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/76) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.5.1a2](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.1a2) (2026-09-18)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.1a1...0.5.1a2)
@@ -175,19 +183,19 @@
 
 ## [0.3.5a3](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a3) (2024-12-02)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a1...0.3.5a3)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a2...0.3.5a3)
 
 **Merged pull requests:**
 
 - import galician translations [\#21](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/21) ([JarbasAl](https://github.com/JarbasAl))
 
-## [0.3.5a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a1) (2024-11-25)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a2...0.3.5a1)
-
 ## [0.3.5a2](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a2) (2024-11-25)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/V0.3.4...0.3.5a2)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.3.5a1...0.3.5a2)
+
+## [0.3.5a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.3.5a1) (2024-11-25)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/V0.3.4...0.3.5a1)
 
 **Merged pull requests:**
 
