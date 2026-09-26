@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.4a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.4a1) (2026-09-26)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.3a2...0.5.4a1)
+
+**Merged pull requests:**
+
+- fix\(it-IT\): the skill's own name is misspelled and unreachable [\#80](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/80) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.5.3a2](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.3a2) (2026-09-18)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.3a1...0.5.3a2)
