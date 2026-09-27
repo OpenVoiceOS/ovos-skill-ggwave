@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.5a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.5a1) (2026-09-27)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.4a1...0.5.5a1)
+
+**Merged pull requests:**
+
+- fix\(locale\): make the store examples reach an intent in da-DK, fr-FR, gl-ES, nl-NL and pt-BR [\#82](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/82) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.5.4a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.4a1) (2026-09-26)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.3a2...0.5.4a1)
