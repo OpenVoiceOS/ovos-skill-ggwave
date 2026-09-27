@@ -9,8 +9,8 @@
   "description": "Ahots-interfazea ggwave pluginarentzat.",
   "examples": [
     "hasi ggwave",
-    "onartu audio data",
-    "desgaitu audio codes"
+    "onartu audio-datuak",
+    "desgaitu audio-kodeak"
   ],
   "tags": ["ahots-interfazea", "audio plugina", "ggwave"]
 }
