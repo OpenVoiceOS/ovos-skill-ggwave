@@ -11,7 +11,7 @@
   "description": "Stemmegrænseflade til ggwave plugin.",
   "examples": [
     "start ggwave",
-    "tillade lyddata",
+    "tillad lyddata",
     "deaktiver lydkoder"
   ],
   "tags": [
