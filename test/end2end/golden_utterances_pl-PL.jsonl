@@ -1,0 +1,3 @@
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "włącz ggwave", "lang": "pl-PL", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "kody audio włączone", "lang": "pl-PL", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "wyłącz ggwave", "lang": "pl-PL", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false, "machine_generated": true}
