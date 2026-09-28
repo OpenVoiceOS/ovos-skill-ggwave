@@ -1,0 +1,3 @@
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "فعال کردن ggwave", "lang": "fa-IR", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "کد صوتی روشن", "lang": "fa-IR", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "غیرفعال کردن ggwave", "lang": "fa-IR", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false, "machine_generated": true}
