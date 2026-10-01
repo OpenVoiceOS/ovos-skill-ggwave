@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.6a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.6a1) (2026-10-01)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.5a2...0.5.6a1)
+
+**Merged pull requests:**
+
+- fix\(locale\): gl-ES enable\_ggwave no longer accepts desactivado [\#86](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/86) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.5.5a2](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.5a2) (2026-09-28)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.5a1...0.5.5a2)
