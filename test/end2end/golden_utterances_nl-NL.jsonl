@@ -1,0 +1,6 @@
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "schakel in ggwave", "lang": "nl-NL", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ggwave aan", "lang": "nl-NL", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "sta ggwave toe", "lang": "nl-NL", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "schakel uit ggwave", "lang": "nl-NL", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ggwave uit", "lang": "nl-NL", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "sta ggwave niet toe", "lang": "nl-NL", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}

@@ -1,0 +1,39 @@
+# MAINTENANCE_REPORT — ovos-skill-ggwave
+
+## 2026-03-14 — Workflow Modernization (Qwen Code)
+
+- **AI Model**: qwen3.5-2501
+- **Actions Taken**:
+  - Added `locale-check.yml` workflow — verifies locale files are included in package build
+  - Updated `sync-translations.yml` — added `locale_path: 'ovos_skill_ggwave/locale'` parameter
+  - Updated `QUICK_FACTS.md` — added CI/CD Workflows table and Translation Management section
+  - Total workflows: 14 (complete OVOS skill CI/CD coverage)
+- **Oversight**: Human review required before merging.
+
+## 2026-03-13
+
+- **AI Model**: qwen3.5-2501
+- **Actions Taken**:
+  - Fixed CI failure in ovoscope workflow — added `ovos-padatious` to `[project.optional-dependencies].test` in `pyproject.toml`
+  - Updated `QUICK_FACTS.md` — added test dependencies row
+  - Updated `gh-automations/.github/workflows/ovoscope.yml` to auto-install pipelines as **CI fallback** (not replacement)
+  - CI was failing because `require_padatious: true` was set but dependency was missing from `pyproject.toml`
+  - Resolution: Skills MUST declare pipeline dependencies in `pyproject.toml` for local/distro testing; CI auto-install is safety net only
+  - Note: PyPI package name is `ovos-padatious` (entry point: `ovos-padatious-pipeline-plugin`)
+- **Oversight**: Human review required before merging.
+
+## 2026-03-10
+
+- **AI Model**: claude-sonnet-4-6
+- **Actions Taken**:
+  - Created `test/unittests/test_skill.py` — 12 FakeBus unit tests covering `initialize`,
+    `handle_ggwave_on`, `handle_ggwave_off`, `handle_enable_ggwave`, `handle_disable_ggwave`,
+    and bus event round-trips.
+  - Created `test/end2end/test_ggwave.py` — 6 ovoscope E2E tests covering enable/disable
+    intent matching for multiple utterance forms.
+  - Created `docs/index.md` — architecture overview, intent handler table, bus event table.
+  - Created `FAQ.md` — 12 keyword-rich Q&As covering usage, bus messages, auto-timeout, testing.
+  - Created `QUICK_FACTS.md` — machine-readable reference.
+  - Created `AUDIT.md` — known issues and technical debt.
+  - Created `SUGGESTIONS.md` — proposed enhancements.
+- **Oversight**: Human review required before merging.
