@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.6a2](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.6a2) (2026-10-08)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.6a1...0.5.6a2)
+
+**Merged pull requests:**
+
+- test: golden utterances for every intent in every shipped locale [\#88](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/88) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.5.6a1](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.6a1) (2026-10-01)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.5a2...0.5.6a1)
