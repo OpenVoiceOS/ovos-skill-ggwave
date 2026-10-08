@@ -1,0 +1,6 @@
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "включить ggwave", "lang": "ru-RU", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "запустить ggwave", "lang": "ru-RU", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "отключить ggwave", "lang": "ru-RU", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "включить звуковой код", "lang": "ru-RU", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "остановить ggwave", "lang": "ru-RU", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "звуковые коды выключены", "lang": "ru-RU", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": true, "machine_generated": true}

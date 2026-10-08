@@ -1,0 +1,6 @@
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "active ggwave", "lang": "fr-FR", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ggwave activé", "lang": "fr-FR", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "démarre code audio", "lang": "fr-FR", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "désactive ggwave", "lang": "fr-FR", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ggwave désactivé", "lang": "fr-FR", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "arrête code audio", "lang": "fr-FR", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}

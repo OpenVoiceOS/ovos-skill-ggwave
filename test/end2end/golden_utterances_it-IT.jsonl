@@ -1,0 +1,6 @@
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "attiva i codici QR audio", "lang": "it-IT", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "voglio i codici QR audio avviato", "lang": "it-IT", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "avvia dati audio QR", "lang": "it-IT", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "disattiva i codici QR audio", "lang": "it-IT", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "voglio i codici QR audio tolto", "lang": "it-IT", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "spegni dati audio QR", "lang": "it-IT", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
