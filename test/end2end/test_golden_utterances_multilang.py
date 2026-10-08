@@ -2,7 +2,8 @@
 ovos-skill-ggwave.
 
 Every locale under ``ovos_skill_ggwave/locale/`` gets its own
-``golden_utterances_<lang>.jsonl``. Each row's utterance is a direct
+``golden_utterances_<lang>.jsonl``, and every row of every file present
+runs, including rows marked ``needs_manual``. Each row's utterance is a direct
 mechanical expansion of that locale's own ``enable_ggwave.intent`` /
 ``disable_ggwave.intent`` padatious template: the ``(a|b|c)`` word-choice
 groups are resolved to one alternative each, three distinct
@@ -30,10 +31,10 @@ SKILL_ID = "ovos-skill-ggwave.openvoiceos"
 
 END2END_DIR = Path(__file__).parent
 
-LANGS = [
-    "en-US", "ca-ES", "da-DK", "de-DE", "es-ES", "eu-ES", "fr-FR",
-    "gl-ES", "it-IT", "kab", "nl-NL", "pt-BR", "pt-PT", "sv-SE",
-]
+LANGS = sorted(
+    p.stem[len("golden_utterances_"):]
+    for p in END2END_DIR.glob("golden_utterances_*.jsonl")
+)
 
 NEGATIVE_UTTERANCES = [
     ("what's the weather", "en-US", "ovos-skill-weather.openvoiceos"),
@@ -50,10 +51,7 @@ def _load_rows(lang):
             line = line.strip()
             if not line:
                 continue
-            row = json.loads(line)
-            if row.get("needs_manual"):
-                continue
-            rows.append(row)
+            rows.append(json.loads(line))
     return rows
 
 
@@ -74,9 +72,6 @@ def _capture(mc, text, lang, session_id, pipeline=PADATIOUS_PIPELINE):
     capture = CaptureSession(mc)
     capture.capture(utterance, timeout=30)
     return [m.msg_type for m in capture.finish()]
-
-
-KNOWN_BUGS = {}
 
 
 def _make_locale_test_case(lang):
@@ -104,9 +99,6 @@ def _make_locale_test_case(lang):
                 f"golden-{row['lang']}-{row['intent_label']}-{row['utterance']}",
             )
             matched = any(t in candidates for t in types)
-            bug_key = (row["lang"], row["utterance"])
-            if bug_key in KNOWN_BUGS and not matched:
-                self.skipTest(f"known-bug: {KNOWN_BUGS[bug_key]}")
             self.assertTrue(
                 matched,
                 f"[{row['lang']}] {row['utterance']!r}: expected one of "
@@ -146,3 +138,10 @@ del _lang, _cls  # for-loop variables leak into module globals; without this
 # deletion pytest also collects a spurious extra test class literally named
 # "_cls" (bound to whichever locale ran last), which boots a second,
 # redundant MiniCroft for that locale under a different collected name.
+
+
+def test_every_shipping_locale_has_a_golden_file():
+    golden = {p.stem.split("_", 2)[2] for p in END2END_DIR.glob("golden_utterances_*.jsonl")}
+    locale_root = END2END_DIR.parents[1] / "ovos_skill_ggwave" / "locale"
+    shipping = {d.name for d in locale_root.iterdir() if d.is_dir() and any(d.rglob("*.intent"))}
+    assert golden == shipping, f"golden files {sorted(golden ^ shipping)} differ from shipping locales"
