@@ -2,7 +2,7 @@
 # Licensed under the Apache License, Version 2.0
 """End-to-end intent-routing tests for ovos-skill-ggwave (en-US).
 
-These assert *per-utterance* that the Padatious pipeline routes an utterance to
+These assert *per-utterance* that the Padacioso pipeline routes an utterance to
 the expected intent handler and that the skill emits its side-effect bus event.
 They deliberately use subset assertions over the captured message stream rather
 than a strict full-sequence match: the exact ordered sequence drifts across
@@ -18,7 +18,7 @@ import unittest
 
 from ovos_bus_client.message import Message
 from ovos_bus_client.session import Session
-from ovoscope import get_minicroft, CaptureSession, PADATIOUS_PIPELINE
+from ovoscope import get_minicroft, CaptureSession, PADACIOSO_PIPELINE
 
 from ovos_skill_ggwave import GGWaveSkill
 
@@ -43,7 +43,7 @@ DISABLE_INTENT = _candidates("disable_ggwave.intent")
 
 def _session() -> Session:
     session = Session("e2e-intents")
-    session.pipeline = PADATIOUS_PIPELINE
+    session.pipeline = PADACIOSO_PIPELINE
     return session
 
 

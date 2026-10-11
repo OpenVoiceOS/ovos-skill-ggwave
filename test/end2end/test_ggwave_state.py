@@ -20,7 +20,7 @@ import unittest
 
 from ovos_bus_client.message import Message
 from ovos_bus_client.session import Session
-from ovoscope import get_minicroft, CaptureSession, PADATIOUS_PIPELINE
+from ovoscope import get_minicroft, CaptureSession, PADACIOSO_PIPELINE
 
 from ovos_skill_ggwave import GGWaveSkill
 
@@ -51,7 +51,7 @@ def _assert_any_in(candidates, types):
 
 def _session(session_id: str) -> Session:
     session = Session(session_id)
-    session.pipeline = PADATIOUS_PIPELINE
+    session.pipeline = PADACIOSO_PIPELINE
     return session
 
 

@@ -1,6 +1,12 @@
-{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "gaitu ggwave", "lang": "eu-ES", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
-{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ggwave piztuta", "lang": "eu-ES", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
-{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "hasi audio code", "lang": "eu-ES", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
-{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "desgaitu ggwave", "lang": "eu-ES", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
-{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ggwave itzalita", "lang": "eu-ES", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
-{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "gelditu audio code", "lang": "eu-ES", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "gaitu ggwave, mesedez", "lang": "eu-ES", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "gaitu ggwave"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "jarri ggwave piztuta", "lang": "eu-ES", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "ggwave piztuta"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "hasi audio-kodeak erabiltzen", "lang": "eu-ES", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "hasi audio code"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "desgaitu ggwave, mesedez", "lang": "eu-ES", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "desgaitu ggwave"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "utzi ggwave itzalita", "lang": "eu-ES", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "ggwave itzalita"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "audio-kodeak gelditu, mesedez", "lang": "eu-ES", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "gelditu audio code"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "piztu ggwave", "lang": "eu-ES", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "aktibatu audio-kodeak", "lang": "eu-ES", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "soinu bidezko datuak gaitu nahi ditut", "lang": "eu-ES", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "itzali ggwave", "lang": "eu-ES", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "desaktibatu audio-kodeak", "lang": "eu-ES", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ez dut ggwave gehiago behar, itzali", "lang": "eu-ES", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true}
