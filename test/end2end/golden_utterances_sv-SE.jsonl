@@ -1,6 +1,12 @@
-{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "aktivera ggwave", "lang": "sv-SE", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
-{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ggwave på", "lang": "sv-SE", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
-{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "slå på ljudkod", "lang": "sv-SE", "intent_label": "enable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
-{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "inaktivera ggwave", "lang": "sv-SE", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
-{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ggwave av", "lang": "sv-SE", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
-{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "stäng av ljudkod", "lang": "sv-SE", "intent_label": "disable_ggwave.intent", "intent_type": "padatious", "needs_manual": false}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "kan du aktivera ggwave", "lang": "sv-SE", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "aktivera ggwave"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "sätt på ggwave", "lang": "sv-SE", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "ggwave på"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "slå på ljudkoderna", "lang": "sv-SE", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "slå på ljudkod"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "kan du inaktivera ggwave", "lang": "sv-SE", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "inaktivera ggwave"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "stäng av ggwave nu", "lang": "sv-SE", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "ggwave av"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "stäng av ljudkoderna", "lang": "sv-SE", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "stäng av ljudkod"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "starta dataöverföring via ljud", "lang": "sv-SE", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "jag vill skicka data med ljud, slå på ggwave", "lang": "sv-SE", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "tillåt ljudkoder nu", "lang": "sv-SE", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "stoppa dataöverföring via ljud", "lang": "sv-SE", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "jag behöver inte ggwave längre, stäng av det", "lang": "sv-SE", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "slå av ljudkoder nu", "lang": "sv-SE", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true}
