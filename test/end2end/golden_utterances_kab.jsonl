@@ -1,0 +1,12 @@
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ttxil-k rmed ggwave", "lang": "kab", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "rmed ggwave"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "bɣiɣ ad yermed ggwave", "lang": "kab", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "ggwave yermed"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ttxil-k senker tangalt n umeslay", "lang": "kab", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "senker tangalt n umeslay"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ttxil-k sens ggwave", "lang": "kab", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "sens ggwave"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "bɣiɣ ad yensa ggwave", "lang": "kab", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "ggwave yensa"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ttxil-k seḥbes tangalt n umeslay", "lang": "kab", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true, "rewritten_from": "seḥbes tangalt n umeslay"}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "rmed-d ggwave tura", "lang": "kab", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "qbel tingalin qr n umeslay ttxil-k", "lang": "kab", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "senker isefka n umeslay tura", "lang": "kab", "intent_label": "enable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "sens isefka n umeslay tura", "lang": "kab", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "seḥbes ggwave tura", "lang": "kab", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true}
+{"skill_id": "ovos-skill-ggwave.openvoiceos", "utterance": "ur qbil ara tingalin qr n umeslay ttxil-k", "lang": "kab", "intent_label": "disable_ggwave.intent", "needs_manual": true, "machine_generated": true}
