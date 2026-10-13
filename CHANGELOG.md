@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.6a3](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.6a3) (2026-10-13)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.6a2...0.5.6a3)
+
+**Merged pull requests:**
+
+- test: natural golden rows and an m2v golden gate for every locale [\#90](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/90) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.5.6a2](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.6a2) (2026-10-08)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.6a1...0.5.6a2)
