@@ -43,19 +43,18 @@ MIN_MATCHED_ROWS_PER_INTENT = 1
 NEGATIVE_KNOWN_CLAIMS = {
     "ru-RU": {"включи музыку": "enable_ggwave"},
 }
-# With only this skill loaded, the published m2v model claims most fa-IR
-# requests for other skills (music, timer, joke, volume) while every fa-IR
-# golden row matches its own intent.
-NEGATIVE_ENGINE_GAPS = {
-    "fa-IR": "m2v claims 4 of 6 fa-IR requests for other skills in two runs",
-}
-# A locale that stays below MIN_MATCH_RATE after its natural lines and a
-# linguonnx translation of the en-US lines, as {lang: (measured rate, reason)}.
+# Locales whose negatives the published m2v model cannot separate from this
+# skill, as {lang: reason}. Their negatives run as a non-strict expected failure.
+NEGATIVE_ENGINE_GAPS = {}
+# A locale that stays below MIN_MATCH_RATE on the published m2v model with the
+# lines it ships, as {lang: (measured rate, reason)}.
 # Its rate check is an expected failure, but the per-intent floor still holds,
 # and a rate more than GAP_TOLERANCE below the measured rate fails.
 GOLDEN_LOCALE_GAPS = {
-    "pl-PL": (0.75, "m2v confuses pl-PL włącz and wyłącz rows, with the linguonnx lines added"),
-    "pt-BR": (0.75, "m2v confuses pt-BR enable and disable rows; the linguonnx lines lowered the rate"),
+    "es-CO": (0.667, "m2v confuses es-CO enable and disable rows and matches 2 disable "
+                     "rows to nothing; 8 of 12 rows match in each of three runs"),
+    "fa-IR": (0.75, "m2v confuses fa-IR enable and disable rows and matches 1 disable "
+                    "row to nothing; 9 of 12 rows match in each of three runs"),
 }
 GAP_TOLERANCE = 0.10
 END2END_DIR = Path(__file__).parent
