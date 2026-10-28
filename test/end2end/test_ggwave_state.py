@@ -20,7 +20,8 @@ import unittest
 
 from ovos_bus_client.message import Message
 from ovos_bus_client.session import Session
-from ovoscope import get_minicroft, CaptureSession, PADACIOSO_PIPELINE
+from ovoscope import CaptureSession
+from ovoscope.routing import PIPELINE, TALLY, get_prototype_minicroft
 
 from ovos_skill_ggwave import GGWaveSkill
 
@@ -31,16 +32,8 @@ SKILL_ID = "ovos-skill-ggwave.openvoiceos"
 TIMEOUT_EVENT_CANDIDATES = {f"{SKILL_ID}:ggwave.timeout", f"{SKILL_ID}.ggwave.timeout"}
 
 
-def _candidates(intent_label: str) -> set:
-    """See test_intents_en_us.py's _candidates docstring: different
-    padatious/padacioso plugin versions register the matched-intent bus
-    event with or without the ``.intent`` filename extension kept."""
-    base = intent_label[:-len(".intent")] if intent_label.endswith(".intent") else intent_label
-    return {f"{SKILL_ID}:{intent_label}", f"{SKILL_ID}:{base}"}
-
-
-ENABLE_INTENT = _candidates("enable_ggwave.intent")
-DISABLE_INTENT = _candidates("disable_ggwave.intent")
+ENABLE_INTENT = f"{SKILL_ID}:enable_ggwave"
+DISABLE_INTENT = f"{SKILL_ID}:disable_ggwave"
 
 
 def _assert_any_in(candidates, types):
@@ -51,7 +44,8 @@ def _assert_any_in(candidates, types):
 
 def _session(session_id: str) -> Session:
     session = Session(session_id)
-    session.pipeline = PADACIOSO_PIPELINE
+    session.lang = "en-US"
+    session.pipeline = PIPELINE
     return session
 
 
@@ -65,8 +59,8 @@ def _utterance(utt: str, session: Session) -> Message:
 
 class _StateTestCase(unittest.TestCase):
     def setUp(self):
-        self.minicroft = get_minicroft(
-            skill_ids=[], extra_skills={SKILL_ID: GGWaveSkill},
+        self.minicroft = get_prototype_minicroft(
+            [], lang="en-US", extra_skills={SKILL_ID: GGWaveSkill},
             enable_event_scheduler=True,
         )
 
@@ -114,7 +108,7 @@ class TestAlreadyEnabled(_StateTestCase):
         messages = self._capture("enable ggwave", "e2e-already-enable")
         types = [m.msg_type for m in messages]
 
-        _assert_any_in(ENABLE_INTENT, types)
+        TALLY.assert_routed("enable ggwave", ENABLE_INTENT, types)
         # idempotent: intent matched but no enable side-effect
         self.assertNotIn("ovos.ggwave.enable", types)
 
@@ -128,7 +122,7 @@ class TestAlreadyDisabled(_StateTestCase):
         messages = self._capture("disable ggwave", "e2e-already-disable")
         types = [m.msg_type for m in messages]
 
-        _assert_any_in(DISABLE_INTENT, types)
+        TALLY.assert_routed("disable ggwave", DISABLE_INTENT, types)
         self.assertNotIn("ovos.ggwave.disable", types)
 
 
@@ -157,7 +151,7 @@ class TestBusEventHandlers(_StateTestCase):
         messages = self._capture("disable ggwave", "e2e-cancel-timeout")
         types = [m.msg_type for m in messages]
 
-        _assert_any_in(DISABLE_INTENT, types)
+        TALLY.assert_routed("disable ggwave", DISABLE_INTENT, types)
 
     def test_disable_intent_cancels_timeout(self):
         self.minicroft.bus.emit(Message("ggwave.enabled"))
@@ -166,7 +160,7 @@ class TestBusEventHandlers(_StateTestCase):
         messages = self._capture("disable ggwave", "e2e-cancel-timeout")
         types = [m.msg_type for m in messages]
 
-        _assert_any_in(DISABLE_INTENT, types)
+        TALLY.assert_routed("disable ggwave", DISABLE_INTENT, types)
         self.assertIn("ovos.ggwave.disable", types)
         self.assertFalse(TIMEOUT_EVENT_CANDIDATES & set(self._scheduled_event_names()))
 
