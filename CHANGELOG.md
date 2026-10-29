@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.6a4](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.6a4) (2026-10-29)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.6a3...0.5.6a4)
+
+**Merged pull requests:**
+
+- test: run the end2end suite on the m2v prototype pipeline [\#93](https://github.com/OpenVoiceOS/ovos-skill-ggwave/pull/93) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.5.6a3](https://github.com/OpenVoiceOS/ovos-skill-ggwave/tree/0.5.6a3) (2026-10-13)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-ggwave/compare/0.5.6a2...0.5.6a3)
