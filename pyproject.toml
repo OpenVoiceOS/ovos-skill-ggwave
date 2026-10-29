@@ -19,8 +19,8 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 test = [
-    "ovoscope>=1.11.2a1",
-    "ovos-m2v-pipeline>=0.32.0a1",
+    "ovoscope>=1.12.1a1",
+    "ovos-m2v-pipeline>=0.37.3a1",
     "padacioso",
     "pytest",
     "pytest-timeout",
@@ -47,3 +47,6 @@ ovos_skill_ggwave = [
 
 [project.entry-points."opm.skill"]
 "ovos-skill-ggwave.openvoiceos" = "ovos_skill_ggwave:GGWaveSkill"
+
+[tool.pytest.ini_options]
+ovoscope_min_routing_rate = 0.85
